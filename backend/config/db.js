@@ -1,0 +1,21 @@
+import mongoose from 'mongoose';
+
+const connectDB = async () => {
+  if (!process.env.MONGO_URI) {
+    throw new Error('MONGO_URI is not defined in environment variables.');
+  }
+
+  try {
+    const connection = await mongoose.connect(process.env.MONGO_URI, {
+      dbName: 'poetry_portfolio'
+    });
+
+    console.log(`MongoDB connected: ${connection.connection.host}`);
+    return connection;
+  } catch (error) {
+    console.error('MongoDB connection failed:', error.message);
+    throw error;
+  }
+};
+
+export default connectDB;
