@@ -1,4 +1,4 @@
-# Indian Peacock Poetry Portfolio
+#  Poetry Portfolio
 
 A personal poetry portfolio website built with the MERN stack and shaped as a modern literary archive inspired by ancient Indian manuscripts and the refined colors of the peacock.
 
