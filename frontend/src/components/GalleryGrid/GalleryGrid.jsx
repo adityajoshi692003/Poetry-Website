@@ -2,6 +2,10 @@ import { useState } from 'react';
 import GalleryLightbox from '../GalleryLightbox/GalleryLightbox.jsx';
 
 const categories = ['ALL', 'IMAGES', 'VIDEOS'];
+const isVideoItem = (item) =>
+  item.mediaType?.toLowerCase() === 'video' ||
+  ['video', 'videos'].includes(item.category?.toLowerCase()) ||
+  Boolean(item.videoUrl || item.thumbnail);
 
 export default function GalleryGrid({ items = [] }) {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
@@ -10,7 +14,7 @@ export default function GalleryGrid({ items = [] }) {
   const visibleItems =
     selectedCategory === 'ALL'
       ? items
-      : items.filter((item) => selectedCategory === 'VIDEOS' ? item.mediaType === 'video' : item.mediaType !== 'video');
+      : items.filter((item) => selectedCategory === 'VIDEOS' ? isVideoItem(item) : !isVideoItem(item));
 
   return (
     <section className="gallery-section section-block">
@@ -34,7 +38,7 @@ export default function GalleryGrid({ items = [] }) {
 
         <div className="gallery-grid">
           {visibleItems.map((item) => (
-            item.mediaType === 'video' ? (
+            isVideoItem(item) ? (
               <a key={item._id || item.title} className="gallery-item gallery-video-card" href={item.videoUrl} target="_blank" rel="noreferrer" aria-label={`Watch ${item.title}`}>
                 <img src={item.image} alt={item.title} loading="lazy" />
                 <span className="gallery-play-icon" aria-hidden="true">▶</span>

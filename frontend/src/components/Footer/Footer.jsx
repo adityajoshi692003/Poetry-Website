@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import api from '../../services/api.js';
+import { getVisitorId } from '../../utils/visitor.js';
 
 const links = [
   { to: '/', label: 'Home' },
@@ -10,6 +13,24 @@ const links = [
 ];
 
 export default function Footer() {
+  const [uniqueVisits, setUniqueVisits] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+
+    api.post('/visitors', { visitorId: getVisitorId() })
+      .then(({ data }) => {
+        if (active) setUniqueVisits(data.count);
+      })
+      .catch(() => {
+        if (active) setUniqueVisits(null);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
@@ -43,6 +64,9 @@ export default function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>Copyright © 2026 Poetry Ink Literary Archive</span>
+        <span className="footer-views" aria-live="polite">
+          Unique browser visits: {uniqueVisits === null ? '—' : uniqueVisits.toLocaleString()}
+        </span>
       </div>
     </footer>
   );

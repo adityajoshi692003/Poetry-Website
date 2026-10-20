@@ -14,7 +14,8 @@ const poemSchema = new mongoose.Schema(
     coverImage: { type: String, default: '' }
   },
   {
-    timestamps: true
+    timestamps: true,
+    suppressReservedKeysWarning: true
   }
 );
 

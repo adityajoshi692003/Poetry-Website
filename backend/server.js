@@ -9,6 +9,7 @@ import bookRoutes from './routes/bookRoutes.js';
 import videoRoutes from './routes/videoRoutes.js';
 import galleryRoutes from './routes/galleryRoutes.js';
 import contactRoutes from './routes/contactRoutes.js';
+import visitorRoutes from './routes/visitorRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 dotenv.config();
@@ -25,12 +26,17 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Poetry archive API is running.' });
 });
 
+app.get('/', (req, res) => {
+  res.status(200).send('Poetry Portfolio API is running!');
+});
+
 app.use('/api/poems', poemRoutes);
 app.use('/api/collections', collectionRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/visitors', visitorRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
@@ -38,8 +44,17 @@ app.use(errorHandler);
 const startServer = async () => {
   try {
     await connectDB();
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
+    });
+
+    server.on('error', (error) => {
+      if (error.code === 'EADDRINUSE') {
+        console.error(`[Error] Port ${PORT} is already in use by another process.`);
+      } else {
+        console.error('Server error:', error.message);
+      }
+      process.exit(1);
     });
   } catch (error) {
     console.error('Failed to start server:', error.message);

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PoemLikeButton from '../PoemLikeButton/PoemLikeButton.jsx';
 
 export default function PoemCard({ poem }) {
   const collection = poem.collection?.title || 'Untitled Collection';
@@ -13,9 +14,10 @@ export default function PoemCard({ poem }) {
           <span>{poem.year}</span>
           <span>{poem.language}</span>
         </div>
-        <Link to={`/poems/${poem.slug}`} className="text-link">
-          Read Poem →
-        </Link>
+        <div className="poem-card-actions">
+          <Link to={`/poems/${poem.slug}`} className="text-link">Read Poem →</Link>
+          <PoemLikeButton slug={poem.slug} />
+        </div>
       </div>
     </article>
   );

@@ -5,8 +5,8 @@ export default function Hero({ query, onSearch }) {
     <section className="hero-section">
       <div className="container text-only-hero">
         <div className="hero-copy">
-          <p className="eyebrow">Poetry Ink · a digital literary archive</p>
-          <h1>Poetry, kept close.</h1>
+          <p className="eyebrow">Poetry Ink !!</p>
+          <h1>Poetry, kept close !!</h1>
           <p className="hero-intro">
             Explore poems, collections and illustrated volumes shaped by language, place and memory.
           </p>

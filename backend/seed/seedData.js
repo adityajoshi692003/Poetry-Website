@@ -102,13 +102,13 @@ const collections = [
 
 const poems = [
   {
-    title: 'The River Remembers',
-    slug: 'the-river-remembers',
-    content: 'The river remembers every footstep\nthat once turned the mud to prayer.\nIt carries the blue of old monsoon evenings,\nthe hush of temple bells,\nand the names we forgot to speak aloud.\n\nI stand at its edge and hear\nmy own life returning in water.\nEach ripple is a letter,\neach silt a memory,\nand each curve a home I almost kept.',
-    excerpt: 'The river remembers every footstep that once turned the mud to prayer.',
+    title: 'मै तेरे प्रेम में, गीत रच जाऊंगा',
+    slug: 'मै तेरे प्रेम में, गीत रच जाऊंगा',
+    content: 'मै तेरे प्रेम में, गीत रच जाऊंगा\nतुम वही गीत फिर गुनगुनाना प्रिये..\n\nकलम से कागज पे, उतारा करूं\nतुम वही गीत पढ़ फिर गाना प्रिये।\n\nमैं तेरे प्रेम में, गीत रच जाऊंगा..\nतुम वही गीत फिर गुनगुनाना प्रिये ..\n\nचाँद तारों को भी मैं लिख जाऊंगा,\nतुम सलोनी छवि फिर दिखाना प्रिये।\n\nफूलों की सुगंध भरी उपमा के संग,\nअलंकारों  सजे  गीत  गाना  प्रिये।\n\nमैं तेरे प्रेम में, गीत रच जाऊंगा..\nतुम वही गीत फिर गुनगुनाना प्रिये ..\n\nसादगी को तेरी, अब मैं कैसे लिखूं \nहो अक्षर कोई तो, बताना प्रिये।\n\nतू कहे तो, लिखूं सिर्फ नाम तेरा\nया कोई फिर उपाय सुझाना प्रिये।\n\nमैं तेरे प्रेम में, गीत रच जाऊंगा..\nतुम वही गीत फिर गुनगुनाना प्रिये ..\n\nतेरे श्रृंगार को, मैं क्या लिख पाऊंगा\nहिरणी सी लगे, तेरी काया प्रिये।\n\nमाथे पर सजी तेरी बिंदियाँ कहे,\nचांद माथे पे तूने, लगाया रिये।\n\nमैं तेरे प्रेम में, गीत रच जाऊंगा..\nतुम वही गीत फिर गुनगुनाना प्रिये ..\n\nकलम से कागज पे जो, उतारा करूं\nतुम वही गीत पढ़ फिर गाना प्रिये।',
+    excerpt: 'मै तेरे प्रेम में, गीत रच जाऊंगा \n तुम वही गीत फिर गुनगुनाना प्रिये..',
     collection: null,
-    language: 'English',
-    themes: ['Memory', 'Nature', 'Monsoon'],
+    language: 'Hindi',
+    themes: ['Love', 'Beauty', 'Romance'],
     year: 2026,
     featured: true,
     coverImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80'
@@ -140,7 +140,7 @@ const poems = [
   {
     title: 'A Small Lamp in the Rain',
     slug: 'a-small-lamp-in-the-rain',
-    content: 'In the rain, a small lamp\nkeeps its own weather.\nIt does not ask for a window,\nonly a dark room\nand a breath of stillness.\n\nSo I carry my silence\nlike a flame\nthat does not fear storm.' ,
+    content: 'In the rain, a small lamp\nkeeps its own weather.\nIt does not ask for a window,\nonly a dark room\nand a breath of stillness.\n\nSo I carry my silence\nlike a flame\nthat does not fear storm.',
     excerpt: 'In the rain, a small lamp keeps its own weather.',
     collection: null,
     language: 'English',
@@ -267,6 +267,7 @@ const seedDatabase = async () => {
 const getCollectionSlug = (title) => {
   const map = {
     'The River Remembers': 'shringara-rasa',
+    'मै तेरे प्रेम में, गीत रच जाऊंगा': 'shringara-rasa',
     'After the Temple Bells': 'hasya-rasa',
     'मिट्टी की स्मृतियाँ': 'karuna-rasa',
     'A Small Lamp in the Rain': 'bhakti-rasa',
