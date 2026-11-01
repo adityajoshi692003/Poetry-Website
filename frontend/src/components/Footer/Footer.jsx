@@ -44,7 +44,7 @@ export default function Footer() {
       <div className="container footer-grid">
         <div>
           <div className="footer-brand">Kavirasa</div>
-          <p className="footer-tagline">A living library of poetry, art &amp; memory</p>
+          <p className="footer-tagline">A living library of poetry &amp; emotions</p>
         </div>
 
         <nav className="footer-nav" aria-label="Footer navigation">

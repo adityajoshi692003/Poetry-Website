@@ -23,10 +23,10 @@ export default function Hero({ query, onSearch }) {
     >
       <div className="container text-only-hero">
         <div className="hero-copy">
-          <motion.p className="eyebrow" variants={copyVariants} transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}>A living library of words &amp; memory</motion.p>
-          <motion.h1 variants={copyVariants} transition={{ duration: prefersReducedMotion ? 0 : 0.55 }}>Enter a World of Poetry</motion.h1>
+          <motion.p className="eyebrow" variants={copyVariants} transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}>A living library of words &amp; emotions..</motion.p>
+          <motion.h1 variants={copyVariants} transition={{ duration: prefersReducedMotion ? 0 : 0.55 }}>Explore the world of Rasa..</motion.h1>
           <motion.p className="hero-intro" variants={copyVariants} transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}>
-            Explore poetry that captures the timeless spectrum of human emotion.
+            Explore poetry that captures the timeless spectrum of emotions.
           </motion.p>
           <motion.form className="poem-search" onSubmit={(event) => event.preventDefault()} role="search" variants={copyVariants} transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}>
             <label className="sr-only" htmlFor="home-poem-search">Search poems</label>

@@ -12,7 +12,7 @@ export default function ContactPage() {
       <section className="page-hero section-block">
         <div className="container narrow">
           <p className="eyebrow">The quiet courtyard</p>
-          <h1>Find me beyond the page.</h1>
+          <h1>Beyond the page...</h1>
           <p className="page-intro">Follow along, or get in touch through the details below.</p>
         </div>
       </section>
@@ -20,8 +20,8 @@ export default function ContactPage() {
       <section className="contact-details-section section-block">
         <div className="container contact-details-grid">
           <article className="contact-detail-card">
-            <span className="contact-detail-index">01 · Social</span>
-            <h2>Follow along</h2>
+            <span className="contact-detail-index">01 · Social Media</span>
+            <h2>Follow Along..</h2>
             <div className="contact-social-links">
               <a href={contactDetails.instagram} target="_blank" rel="noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -49,19 +49,19 @@ export default function ContactPage() {
 
           <article className="contact-detail-card">
             <span className="contact-detail-index">02 · Direct</span>
-            <h2>Get in touch</h2>
+            <h2>Get in touch via..</h2>
             <div className="contact-detail-list">
               <p>
                 <span>Email</span>
                 {contactDetails.email
                   ? <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
-                  : <span className="contact-detail-pending">Email address to be added</span>}
+                  : <span className="contact-detail-pending">sunil26joshi26@gmail.com</span>}
               </p>
               <p>
-                <span>Phone / WhatsApp</span>
+                <span>Phone Number</span>
                 {contactDetails.phone
                   ? <a href={`tel:${contactDetails.phone.replace(/[^\d+]/g, '')}`}>{contactDetails.phone}</a>
-                  : <span className="contact-detail-pending">Phone number to be added</span>}
+                  : <span className="contact-detail-pending">+91 8390266851</span>}
               </p>
             </div>
           </article>
