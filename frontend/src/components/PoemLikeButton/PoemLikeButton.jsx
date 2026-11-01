@@ -18,13 +18,21 @@ const writeLocal = (key, value) => {
   }
 };
 
-export default function PoemLikeButton({ slug }) {
+export default function PoemLikeButton({ slug, poemId }) {
   const [visitorId] = useState(getVisitorId);
   const [likeState, setLikeState] = useState({ count: 0, liked: false, loading: true });
   const localLikeKey = `poetry-ink-like:${slug}`;
 
   useEffect(() => {
     let active = true;
+
+    if (!poemId) {
+      const liked = readLocal(localLikeKey) === 'true';
+      setLikeState({ count: liked ? 1 : 0, liked, loading: false });
+      return () => {
+        active = false;
+      };
+    }
 
     api.get(`/poems/${slug}/likes`, { params: { visitorId } })
       .then(({ data }) => {
@@ -44,12 +52,19 @@ export default function PoemLikeButton({ slug }) {
     return () => {
       active = false;
     };
-  }, [localLikeKey, slug, visitorId]);
+  }, [localLikeKey, poemId, slug, visitorId]);
 
   const toggleLike = async () => {
     if (likeState.loading) return;
     const liked = !likeState.liked;
     setLikeState((current) => ({ ...current, loading: true }));
+
+    if (!poemId) {
+      const count = liked ? 1 : 0;
+      writeLocal(localLikeKey, String(liked));
+      setLikeState({ count, liked, loading: false });
+      return;
+    }
 
     try {
       const request = liked

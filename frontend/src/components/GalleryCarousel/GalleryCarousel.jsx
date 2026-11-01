@@ -1,35 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import GalleryLightbox from '../GalleryLightbox/GalleryLightbox.jsx';
 
 const AUTO_SCROLL_INTERVAL_MS = 1100;
 
 export default function GalleryCarousel({ items = [] }) {
   const galleryRef = useRef(null);
-  const [canScrollBack, setCanScrollBack] = useState(false);
-  const [canScrollForward, setCanScrollForward] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const prefersReducedMotion = useReducedMotion();
   const visibleItems = items.slice(0, 7);
-
-  useEffect(() => {
-    const gallery = galleryRef.current;
-    if (!gallery) return undefined;
-
-    const updateScrollButtons = () => {
-      setCanScrollBack(gallery.scrollLeft > 1);
-      setCanScrollForward(gallery.scrollLeft + gallery.clientWidth < gallery.scrollWidth - 1);
-    };
-
-    updateScrollButtons();
-    gallery.addEventListener('scroll', updateScrollButtons, { passive: true });
-    window.addEventListener('resize', updateScrollButtons);
-
-    return () => {
-      gallery.removeEventListener('scroll', updateScrollButtons);
-      window.removeEventListener('resize', updateScrollButtons);
-    };
-  }, [visibleItems.length]);
 
   const move = useCallback((direction) => {
     const gallery = galleryRef.current;
@@ -44,8 +25,7 @@ export default function GalleryCarousel({ items = [] }) {
   }, []);
 
   useEffect(() => {
-    if (isPaused || visibleItems.length < 2) return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    if (isPaused || visibleItems.length < 2 || prefersReducedMotion) return undefined;
 
     const timer = window.setInterval(() => {
       const gallery = galleryRef.current;
@@ -60,12 +40,18 @@ export default function GalleryCarousel({ items = [] }) {
     }, AUTO_SCROLL_INTERVAL_MS);
 
     return () => window.clearInterval(timer);
-  }, [isPaused, move, visibleItems.length]);
+  }, [isPaused, move, prefersReducedMotion, visibleItems.length]);
 
   if (!visibleItems.length) return null;
 
   return (
-    <section className="home-gallery-section section-block">
+    <motion.section
+      className="home-gallery-section section-block"
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ amount: 0.14 }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
+    >
       <div className="container">
         <div className="home-section-heading">
           <div>
@@ -74,10 +60,6 @@ export default function GalleryCarousel({ items = [] }) {
           </div>
           <div className="gallery-heading-actions">
             <Link className="text-link" to="/gallery">Open full gallery →</Link>
-            <div className="carousel-controls">
-              <button type="button" onClick={() => move(-1)} aria-label="Previous gallery image" disabled={!canScrollBack}>←</button>
-              <button type="button" onClick={() => move(1)} aria-label="Next gallery image" disabled={!canScrollForward}>→</button>
-            </div>
           </div>
         </div>
 
@@ -92,14 +74,24 @@ export default function GalleryCarousel({ items = [] }) {
           }}
         >
           {visibleItems.map((item, index) => (
-            <button type="button" className="home-gallery-item" key={item._id || `${item.title}-${index}`} onClick={() => setSelectedImage(item)}>
+            <motion.button
+              type="button"
+              className="home-gallery-item"
+              key={item._id || `${item.title}-${index}`}
+              onClick={() => setSelectedImage(item)}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -3 }}
+              viewport={{ amount: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.38, delay: prefersReducedMotion ? 0 : index * 0.045 }}
+            >
               <img src={item.image} alt={item.title} loading="lazy" />
               <span>{item.title}</span>
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>
       <GalleryLightbox image={selectedImage} onClose={() => setSelectedImage(null)} />
-    </section>
+    </motion.section>
   );
 }

@@ -48,7 +48,7 @@ export default function PoemsPage() {
     <>
       <section className="page-hero section-block">
         <div className="container narrow">
-          <p className="eyebrow">The Poems</p>
+          <p className="eyebrow">My Poems</p>
           <h1>Poems from the Poetry Ink archive.</h1>
           <p className="page-intro">Browse the complete reading shelf, or narrow it by title, collection or theme.</p>
         </div>
@@ -72,7 +72,7 @@ export default function PoemsPage() {
 
       <div className="container poem-grid archive-grid poem-card-grid">
         {filteredPoems.length ? (
-          filteredPoems.map((poem) => <PoemCard key={poem.slug} poem={poem} />)
+          filteredPoems.map((poem, index) => <PoemCard key={poem.slug} poem={poem} index={index} />)
         ) : (
           <div className="empty-panel">No poems match the current filters.</div>
         )}

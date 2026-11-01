@@ -1,0 +1,878 @@
+.literary-world {
+  position: relative;
+  isolation: isolate;
+  min-height: 65vh;
+  overflow: clip;
+  background-color: var(--page-bg);
+  background-image: none;
+  transition: background-color 350ms ease, color 350ms ease;
+}
+
+.literary-world::before,
+.literary-world::after {
+  display: none;
+}
+
+.literary-world > * {
+  position: relative;
+}
+
+.page-shell > .world-parallax {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  perspective: 1200px;
+  perspective-origin: 50% 42%;
+  pointer-events: none;
+}
+
+.world-parallax .parallax-layer {
+  position: absolute;
+  inset: -14vh -2vw;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.parallax-atmosphere {
+  opacity: 0.55;
+  background:
+    radial-gradient(ellipse at 18% 24%, color-mix(in srgb, var(--gold) 13%, transparent), transparent 38rem),
+    radial-gradient(ellipse at 80% 68%, color-mix(in srgb, var(--green) 12%, transparent), transparent 34rem);
+}
+
+.parallax-architecture {
+  opacity: 0.13;
+  background:
+    radial-gradient(ellipse at 50% 53%, transparent 0 24%, color-mix(in srgb, var(--world-ink, var(--primary)) 26%, transparent) 24.15% 24.35%, transparent 24.5%),
+    radial-gradient(ellipse at 50% 53%, transparent 0 35%, color-mix(in srgb, var(--gold) 28%, transparent) 35.1% 35.3%, transparent 35.5%),
+    repeating-linear-gradient(90deg, transparent 0 9%, color-mix(in srgb, var(--world-ink, var(--primary)) 14%, transparent) 9.1% 9.4%, transparent 9.5% 19%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 83%, transparent 100%);
+}
+
+.parallax-midground {
+  opacity: 0.08;
+}
+
+.parallax-midground::before,
+.parallax-midground::after {
+  position: absolute;
+  bottom: 12%;
+  width: clamp(7rem, 14vw, 13rem);
+  height: clamp(9rem, 18vw, 15rem);
+  border: 1px solid color-mix(in srgb, var(--world-ink, var(--primary)) 22%, transparent);
+  border-radius: 2px 2px 4px 4px;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 12%, transparent), transparent 18% 84%, color-mix(in srgb, var(--world-ink, var(--primary)) 8%, transparent)),
+    repeating-linear-gradient(180deg, transparent 0 1.6rem, color-mix(in srgb, var(--world-ink, var(--primary)) 24%, transparent) 1.62rem 1.67rem, transparent 1.7rem 2rem);
+  box-shadow: 0 1.2rem 1rem color-mix(in srgb, var(--shadow) 25%, transparent);
+  content: '';
+}
+
+.parallax-midground::before {
+  left: 7%;
+  transform: rotateY(16deg) rotate(-7deg);
+}
+
+.parallax-midground::after {
+  right: 7%;
+  transform: rotateY(-16deg) rotate(6deg);
+}
+
+.parallax-foreground {
+  inset: -4vh 0 !important;
+  opacity: 0.08;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--world-ink, var(--primary)) 24%, transparent), transparent 0.8%, transparent 98.8%, color-mix(in srgb, var(--world-ink, var(--primary)) 24%, transparent)),
+    linear-gradient(180deg, transparent 0 87%, color-mix(in srgb, var(--gold) 19%, transparent) 87.2% 87.5%, transparent 87.7%);
+  mask-image: linear-gradient(180deg, transparent, #000 15% 86%, transparent);
+}
+
+html.midnight .parallax-architecture {
+  opacity: 0.11;
+}
+
+html.midnight .parallax-midground,
+html.midnight .parallax-foreground {
+  opacity: 0.06;
+}
+
+.world-parallax-poems .parallax-architecture {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 3.2rem, color-mix(in srgb, var(--gold) 28%, transparent) 3.25rem 3.3rem, transparent 3.35rem 3.8rem),
+    linear-gradient(90deg, transparent 9%, color-mix(in srgb, var(--world-ink, var(--primary)) 12%, transparent) 9.2% 9.5%, transparent 9.7% 90%, color-mix(in srgb, var(--world-ink, var(--primary)) 12%, transparent) 90.2% 90.5%, transparent 90.7%);
+}
+
+.world-parallax-collections .parallax-architecture {
+  background:
+    radial-gradient(ellipse at 50% 51%, transparent 0 18%, color-mix(in srgb, var(--gold) 30%, transparent) 18.15% 18.4%, transparent 18.6%),
+    radial-gradient(ellipse at 50% 51%, transparent 0 31%, color-mix(in srgb, var(--world-ink, var(--primary)) 24%, transparent) 31.15% 31.4%, transparent 31.6%),
+    repeating-linear-gradient(90deg, transparent 0 13%, color-mix(in srgb, var(--gold) 16%, transparent) 13.15% 13.45%, transparent 13.6% 26%);
+}
+
+.world-parallax-about .parallax-midground::before,
+.world-parallax-about .parallax-midground::after {
+  bottom: 16%;
+  width: clamp(6rem, 11vw, 10rem);
+  height: clamp(4rem, 8vw, 7rem);
+  border-radius: 50% 50% 2px 2px;
+  background:
+    linear-gradient(180deg, transparent 62%, color-mix(in srgb, var(--gold) 24%, transparent) 63% 67%, transparent 68%),
+    repeating-linear-gradient(90deg, transparent 0 1.1rem, color-mix(in srgb, var(--world-ink, var(--primary)) 25%, transparent) 1.12rem 1.16rem, transparent 1.2rem 1.5rem);
+}
+
+.world-parallax-gallery .parallax-architecture {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 16%, color-mix(in srgb, var(--gold) 24%, transparent) 16.15% 16.5%, transparent 16.7% 33%),
+    radial-gradient(ellipse at 50% 46%, transparent 0 27%, color-mix(in srgb, var(--world-ink, var(--primary)) 24%, transparent) 27.1% 27.3%, transparent 27.5%);
+}
+
+.world-parallax-contact .parallax-architecture {
+  background:
+    radial-gradient(ellipse at 50% 74%, transparent 0 36%, color-mix(in srgb, var(--gold) 24%, transparent) 36.1% 36.4%, transparent 36.6%),
+    repeating-linear-gradient(90deg, transparent 0 12%, color-mix(in srgb, var(--world-ink, var(--primary)) 18%, transparent) 12.1% 12.45%, transparent 12.6% 25%);
+}
+
+.world-parallax-home .parallax-architecture {
+  background:
+    radial-gradient(ellipse at 50% 62%, transparent 0 22%, color-mix(in srgb, var(--gold) 25%, transparent) 22.15% 22.4%, transparent 22.6%),
+    radial-gradient(ellipse at 50% 62%, transparent 0 34%, color-mix(in srgb, var(--world-ink, var(--primary)) 23%, transparent) 34.1% 34.35%, transparent 34.6%),
+    repeating-linear-gradient(90deg, transparent 0 10%, color-mix(in srgb, var(--world-ink, var(--primary)) 15%, transparent) 10.1% 10.5%, transparent 10.7% 21%);
+}
+
+.world-parallax-collections .parallax-midground {
+  opacity: 0.11;
+}
+
+.world-parallax-gallery .parallax-midground::before,
+.world-parallax-gallery .parallax-midground::after {
+  width: clamp(8rem, 17vw, 15rem);
+  height: clamp(10rem, 20vw, 18rem);
+  border: 0.65rem solid color-mix(in srgb, var(--gold) 28%, transparent);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--world-ink, var(--primary)) 18%, transparent), transparent 58%),
+    repeating-linear-gradient(180deg, transparent 0 2rem, color-mix(in srgb, var(--gold) 26%, transparent) 2.05rem 2.1rem, transparent 2.15rem 2.5rem);
+}
+
+.world-parallax-contact .parallax-atmosphere {
+  background:
+    radial-gradient(ellipse at 50% 86%, color-mix(in srgb, var(--green) 18%, transparent), transparent 40rem),
+    radial-gradient(ellipse at 50% 18%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 36rem);
+}
+
+.literary-world > .literary-route-content {
+  z-index: 1;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.literary-world,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.literary-world .page-hero {
+  padding-top: clamp(3.2rem, 8vw, 6.3rem);
+  padding-bottom: clamp(2.2rem, 5vw, 4rem);
+}
+
+.literary-world .page-hero h1 {
+  max-width: 34ch;
+  font-size: clamp(2.25rem, 4.1vw, 3.8rem);
+  line-height: 1.04;
+}
+
+.world-home {
+  --world-light: #d3b174;
+  --world-ground: #d8c6a9;
+  --world-ink: #725331;
+  background-image: none;
+}
+
+.world-home .hero-section {
+  position: relative;
+  display: grid;
+  min-height: min(660px, 76vh);
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: transparent;
+}
+
+.world-home .hero-section::before {
+  display: none;
+}
+
+.world-home .hero-section::after {
+  display: none;
+}
+
+.world-home .text-only-hero {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 2rem));
+  min-height: auto;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.world-home .text-only-hero .hero-copy {
+  width: min(100%, 720px);
+  margin: 0;
+  text-align: left;
+}
+
+.world-home .text-only-hero .hero-copy h1 {
+  max-width: 100%;
+  margin-inline: 0;
+  font-size: clamp(3rem, 7.2vw, 6rem);
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.world-home .text-only-hero .hero-intro {
+  max-width: 33rem;
+  margin: 1.5rem 0 1rem;
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+}
+
+.world-home .poem-search {
+  margin: 1.5rem 0 1rem;
+}
+
+.world-home .hero-browse-links {
+  justify-content: flex-start;
+}
+
+.world-home .home-reading-section,
+.world-home .home-collections-section,
+.world-home .home-books-section,
+.world-home .home-gallery-section {
+  background-image: none;
+  background-color: transparent;
+}
+
+.world-home .home-collections-section {
+  position: relative;
+}
+
+.world-home .home-section-heading h2 {
+  max-width: none;
+}
+
+.world-poems {
+  --world-light: #d5bd8d;
+  --world-ground: #e6d9c2;
+  --world-ink: #806344;
+  background-image: none;
+}
+
+.literary-world.world-poems .kindle-reader-wrapper {
+  background-color: transparent;
+}
+
+.world-poems .poem-filter-bar {
+  border-radius: 2px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.world-poems .poem-card {
+  border-radius: 2px;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 10%, transparent) 0 2px, transparent 2px),
+    var(--surface);
+}
+
+.world-poems .poem-card:nth-child(3n + 2) {
+  transform: translateY(1.2rem);
+}
+
+.world-poems .poem-detail,
+.world-poems .poem-detail-header {
+  background-color: color-mix(in srgb, var(--surface) 82%, transparent);
+}
+
+.world-collections {
+  --world-light: #c99f61;
+  --world-ground: #dfc9a8;
+  --world-ink: #6d4c32;
+  background-image: none;
+}
+
+.world-collections .collection-card-grid {
+  column-gap: clamp(1rem, 3vw, 2.4rem);
+  row-gap: 2.2rem;
+}
+
+.world-collections .collection-card:nth-child(3n + 2) {
+  margin-top: 2rem;
+}
+
+.world-collections .collection-card .collection-visual {
+  position: relative;
+  min-height: 245px;
+}
+
+.world-collections .collection-card .collection-visual::after {
+  position: absolute;
+  inset: 0;
+  border: 10px solid color-mix(in srgb, var(--gold) 25%, transparent);
+  content: '';
+  pointer-events: none;
+}
+
+.world-about {
+  --world-light: #b7ad88;
+  --world-ground: #d4d0b4;
+  --world-ink: #615942;
+  background-image: none;
+}
+
+.world-about .about-layout {
+  align-items: start;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.world-about .portrait-card {
+  border: 8px solid color-mix(in srgb, var(--gold) 18%, var(--surface));
+  box-shadow: 0 20px 50px var(--shadow);
+  transform: rotate(-1deg);
+}
+
+.world-about .about-copy {
+  padding: clamp(1rem, 4vw, 3rem);
+  border-left: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  background: transparent;
+}
+
+.world-gallery {
+  --world-light: #9eac9d;
+  --world-ground: #cad2c3;
+  --world-ink: #4a655d;
+  background-image: none;
+}
+
+.world-gallery .gallery-grid {
+  gap: clamp(0.75rem, 1.8vw, 1.5rem);
+}
+
+.world-gallery .gallery-item {
+  border: 8px solid color-mix(in srgb, var(--gold) 21%, var(--surface));
+  box-shadow: 0 10px 24px var(--shadow);
+}
+
+.world-gallery .gallery-item:nth-child(4n + 1) {
+  transform: translateY(-0.7rem);
+}
+
+.world-contact,
+.world-contact .contact-world {
+  --world-light: #b18b5c;
+  --world-ground: #263d38;
+  --world-ink: #a17b51;
+}
+
+.world-contact { background-image: none; }
+
+.world-contact::before {
+  right: 12%;
+  width: clamp(11rem, 26vw, 24rem);
+  height: 29rem;
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.world-contact .contact-world-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(2rem, 8vw, 7rem);
+  align-items: start;
+  max-width: 1040px;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.world-contact .contact-details-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  max-width: 1040px;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.world-contact .contact-detail-card {
+  align-items: flex-start;
+  min-height: 250px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-color: color-mix(in srgb, var(--gold) 35%, var(--border));
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+  text-align: left;
+}
+
+.world-contact .contact-detail-card h2 {
+  margin: 1.1rem 0;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+}
+
+.world-contact .contact-detail-card > a {
+  color: var(--primary);
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.world-contact .contact-detail-card > a:hover,
+.world-contact .contact-detail-list a:hover {
+  color: var(--gold);
+}
+
+.contact-detail-list {
+  display: grid;
+  width: 100%;
+  gap: 1rem;
+}
+
+.contact-detail-list p {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-detail-list p > span:first-child {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-detail-list a,
+.contact-detail-pending {
+  color: var(--ink);
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.contact-detail-pending {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.contact-world-note {
+  padding-top: 1.5rem;
+}
+
+.contact-world-note h2 {
+  max-width: 10ch;
+  margin: 1rem 0;
+  font-size: clamp(2.7rem, 5vw, 4.2rem);
+}
+
+.contact-world-note p {
+  max-width: 29rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.courtyard-rule {
+  display: block;
+  width: 6rem;
+  height: 1px;
+  margin: 2.5rem 0;
+  background: var(--gold);
+}
+
+.contact-world-signoff {
+  font-size: 0.85rem;
+}
+
+.contact-world-form {
+  display: grid;
+  gap: 0.55rem;
+  padding: clamp(1.2rem, 3vw, 2.2rem);
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--border));
+  background: color-mix(in srgb, var(--surface) 87%, transparent);
+  box-shadow: 0 18px 48px var(--shadow);
+}
+
+.contact-world-form label {
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-world-form textarea {
+  resize: vertical;
+}
+
+.contact-world-form .hero-action-button {
+  justify-self: start;
+  margin-top: 0.8rem;
+}
+
+.contact-world-form button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.contact-form-notice {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+.contact-form-notice.is-success {
+  color: var(--green);
+}
+
+.contact-form-notice.is-error {
+  color: #a84435;
+}
+
+.opening-sequence {
+  position: fixed;
+  z-index: 70;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  background:
+    linear-gradient(180deg, rgba(16, 42, 39, 0.88), rgba(16, 42, 39, 0.92)),
+    #102a27;
+  color: #f0e2c8;
+  animation: opening-arrive 420ms ease-out both;
+}
+
+.opening-sequence::before,
+.opening-sequence::after {
+  position: absolute;
+  top: 8vh;
+  bottom: 0;
+  width: min(42vw, 40rem);
+  border: 1px solid rgba(201, 166, 105, 0.22);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+  content: '';
+  pointer-events: none;
+  transform: translateZ(-160px);
+}
+
+.opening-sequence::before {
+  left: 50%;
+  opacity: 0.55;
+  transform: translateX(-50%) translateZ(-160px);
+}
+
+.opening-sequence::after {
+  top: 15vh;
+  left: 50%;
+  width: min(32vw, 30rem);
+  opacity: 0.32;
+  transform: translateX(-50%) translateZ(-80px);
+}
+
+.opening-sequence-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 46rem;
+  padding: 2rem;
+  text-align: center;
+  transform: translateY(8vh);
+}
+
+.opening-kicker {
+  margin: 0 0 1rem;
+  color: #c8a772;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.opening-sequence-copy h1 {
+  margin: 0;
+  color: #f0e2c8;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+  animation: ink-unfurl 1.2s 180ms both;
+}
+
+.opening-sequence-copy > p:last-child {
+  margin: 1rem 0 0;
+  color: #cfc5b2;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 0.05em;
+  animation: opening-copy-appear 700ms 850ms both;
+}
+
+.opening-skip {
+  position: absolute;
+  z-index: 2;
+  right: max(1.25rem, env(safe-area-inset-right));
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  min-height: 44px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(201, 166, 105, 0.4);
+  background: transparent;
+  color: #f0e2c8;
+  font-size: 0.78rem;
+}
+
+.opening-skip span {
+  margin-left: 0.6rem;
+  color: #c8a772;
+}
+
+.peacock-feather-guide.is-intro {
+  z-index: 71;
+  top: 18vh;
+  left: calc(50% - 2.5rem);
+  width: clamp(3.7rem, 7vw, 5.4rem);
+  opacity: 0.96;
+  filter: drop-shadow(0 0 24px rgba(109, 172, 143, 0.35));
+}
+
+.peacock-feather-guide.is-intro .peacock-feather-idle {
+  animation: feather-writing-trace 2.4s ease-in-out both;
+}
+
+@keyframes feather-writing-trace {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-5deg); }
+  36% { transform: translate3d(8px, -6px, 0) rotate(4deg); }
+  72% { transform: translate3d(-5px, 7px, 0) rotate(-2deg); }
+}
+
+.home-poetry-quote {
+  margin-bottom: 4rem;
+  border-color: color-mix(in srgb, var(--gold) 60%, var(--border));
+}
+
+.home-poetry-quote blockquote {
+  font-style: italic;
+}
+
+.world-poems .archive-grid.poem-card-grid {
+  padding-bottom: 4rem;
+}
+
+.world-poems .poem-card-grid .poem-card:nth-child(3n + 2) {
+  transform: none;
+}
+
+.literary-world :focus-visible,
+.opening-sequence :focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@keyframes opening-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ink-unfurl {
+  from { clip-path: inset(0 100% 0 0); opacity: 0.35; }
+  to { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+@keyframes opening-copy-appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 850px) {
+  .world-contact .contact-details-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+
+  .world-contact .contact-world-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-world-note h2 {
+    max-width: 14ch;
+  }
+
+  .world-collections .collection-card:nth-child(3n + 2) {
+    margin-top: 0;
+  }
+
+  .world-gallery .gallery-item:nth-child(4n + 1) {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .literary-world .page-hero h1 {
+    font-size: clamp(1.7rem, 7.2vw, 2.4rem);
+    line-height: 1.08;
+  }
+
+  .parallax-atmosphere {
+    opacity: 0.35;
+  }
+
+  .parallax-architecture {
+    opacity: 0.08;
+  }
+
+  .parallax-midground {
+    opacity: 0.05;
+  }
+
+  .parallax-midground::before {
+    left: -3rem;
+  }
+
+  .parallax-midground::after {
+    right: -3rem;
+  }
+
+  .parallax-foreground {
+    opacity: 0.04;
+  }
+
+  .parallax-midground::before,
+  .parallax-midground::after {
+    width: 5rem;
+    height: 7rem;
+  }
+
+  .world-parallax-gallery .parallax-midground::before,
+  .world-parallax-gallery .parallax-midground::after {
+    width: 6rem;
+    height: 8rem;
+    border-width: 0.35rem;
+  }
+
+  .world-home .hero-section {
+    min-height: 500px;
+    padding-block: 4rem;
+    background: transparent;
+  }
+
+  .world-home .text-only-hero .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(2.75rem, 11vw, 3.8rem);
+  }
+
+  .world-poems .poem-card:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  .world-about .about-copy {
+    padding: 1.2rem 0 0 1rem;
+  }
+
+  .opening-sequence::before {
+    inset: 9vh 5vw;
+  }
+
+  .opening-sequence::after {
+    inset: 14vh 10vw 0;
+  }
+
+  .opening-sequence-copy {
+    transform: translateY(5vh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opening-sequence,
+  .opening-sequence-copy h1,
+  .opening-sequence-copy > p:last-child {
+    animation: none;
+  }
+
+  .literary-world,
+  .literary-world *,
+  .opening-sequence * {
+    scroll-behavior: auto !important;
+  }
+
+  .parallax-layer {
+    will-change: auto;
+  }
+}
+
+html.midnight .literary-world {
+  background-image: none;
+}
+
+html.midnight .world-home .hero-section {
+  background: transparent;
+}
+
+html.midnight .world-contact { background-image: none; }
+
+.literary-world .contact-details-section,
+.literary-world .collection-detail-page,
+.literary-world .poem-detail {
+  background-color: transparent;
+}
+
+html.midnight .contact-world-form {
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+}
+
+html.midnight .contact-form-notice.is-error {
+  color: #f29b89;
+}
+
+html.midnight .world-home .text-only-hero .hero-copy h1,
+html.midnight .literary-world .page-hero h1 {
+  color: #f4ebdd;
+  opacity: 1;
+  text-shadow: 0 2px 20px rgba(4, 18, 14, 0.2);
+}
+
+html.midnight .world-home .hero-intro,
+html.midnight .literary-world .page-intro {
+  color: #c7d7cd;
+}
+
+html.midnight .poem-search {
+  border-color: #34584d;
+  background: #193a32;
+  box-shadow: 0 10px 24px rgba(1, 13, 11, 0.3);
+}
+
+html.midnight .poem-search input {
+  color: #f4ebdd;
+}
+
+html.midnight .poem-search input::placeholder {
+  color: #c7d7cd;
+  opacity: 0.92;
+}
+
+html.midnight .hero-action-secondary {
+  border-color: #58b8a4;
+  background: #132c25;
+  color: #f4ebdd;
+}
+
+html.midnight .hero-action-secondary:hover {
+  border-color: #66c6ae;
+  background: #193a32;
+  color: #f4ebdd;
+}
+
+html.midnight .hero-action-primary,
+html.midnight .hero-browse-links a.hero-action-primary {
+  border-color: #58b8a4;
+  background: #58b8a4;
+  color: #0d211c;
+}
+
+html.midnight .hero-action-primary:hover {
+  border-color: #66c6ae;
+  background: #66c6ae;
+  color: #0d211c;
+}

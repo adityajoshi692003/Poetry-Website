@@ -1,0 +1,77 @@
+:root {
+  --font-reading: 'Cormorant Garamond', 'Noto Serif Devanagari', Georgia, serif;
+  --font-interface: 'Inter', 'Noto Serif Devanagari', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-interface);
+  font-size: 1rem;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-shell :where(h1, h2, h3, h4) {
+  font-family: var(--font-reading);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.page-shell :where(p, li, label, input, textarea, select, button, .text-link, .eyebrow, small, time) {
+  font-family: var(--font-interface);
+}
+
+.page-shell :where(.hero-copy h1, .page-hero h1) {
+  max-width: 34ch;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.page-shell .home-section-heading h2,
+.page-shell .contact-world-note h2 {
+  max-width: 100%;
+}
+
+.page-shell .contact-world-note h2 {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+}
+
+.page-shell :where(.hero-intro, .page-intro, .about-copy p, .contact-world-note p, .collection-description-text) {
+  max-width: 65ch;
+  line-height: 1.8;
+}
+
+.page-shell :where(.poem-excerpt, .poem-body p, .kindle-poem-body, .collection-poem-excerpt) {
+  font-family: var(--font-reading);
+  font-size: clamp(1.12rem, 1.5vw, 1.32rem);
+  line-height: 1.8;
+}
+
+.page-shell :where(.poem-card h3, .collection-poem-title, .kindle-poem-title) {
+  font-family: var(--font-reading);
+  line-height: 1.16;
+  text-wrap: pretty;
+}
+
+.page-shell :where(.hero-action-button, .text-link, .carousel-controls button, .carousel-arrow) {
+  letter-spacing: 0;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 0.96rem;
+  }
+
+  .page-shell :where(.hero-intro, .page-intro, .about-copy p, .contact-world-note p, .collection-description-text) {
+    line-height: 1.72;
+  }
+
+  .page-shell :where(.poem-excerpt, .poem-body p, .kindle-poem-body, .collection-poem-excerpt) {
+    font-size: 1.12rem;
+    line-height: 1.75;
+  }
+}

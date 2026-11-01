@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import fallbackBookCover from '../../assets/images/Book.jpeg';
 
 const getAmazonUrl = (book) => {
@@ -7,10 +8,19 @@ const getAmazonUrl = (book) => {
 };
 
 export default function BookCarousel({ books = [] }) {
+  const prefersReducedMotion = useReducedMotion();
+
   if (!books.length) return null;
 
   return (
-    <section className="home-books-section section-block" aria-label="Featured books">
+    <motion.section
+      className="home-books-section section-block"
+      aria-label="Featured books"
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ amount: 0.12 }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.55 }}
+    >
       <div className="container">
         <div className="home-section-heading">
           <div>
@@ -21,7 +31,15 @@ export default function BookCarousel({ books = [] }) {
 
         <div className="book-carousel-grid" aria-label="Featured poetry books">
           {books.map((book, index) => (
-            <article className="book-carousel-card" key={book.slug || book.title}>
+            <motion.article
+              className="book-carousel-card"
+              key={book.slug || book.title}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.14 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.45, delay: prefersReducedMotion ? 0 : index * 0.07 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -5, rotateY: index % 2 ? -1 : 1 }}
+            >
               <Link to="/poems" className="book-carousel-cover" aria-label={`Browse poems in ${book.title}`}>
                 <img
                   src={book.coverImage && book.coverImage !== 'bookCover' ? book.coverImage : fallbackBookCover}
@@ -41,14 +59,13 @@ export default function BookCarousel({ books = [] }) {
                 <p className="book-carousel-author">By {book.author || 'Poetry Ink'}</p>
                 {/* <p>{book.description}</p> */}
                 <div className="book-carousel-meta">
-                  <span>{book.poemCount || 'Selected'} poems</span>
-                  <a className="book-buy-button hero-action-button hero-action-primary" href={getAmazonUrl(book)} target="_blank" rel="noreferrer">Buy Now <span aria-hidden="true">↗</span></a>
+                  <a className="book-buy-button hero-action-button hero-action-primary" href={getAmazonUrl(book)} target="_blank" rel="noreferrer">Buy Now <span aria-hidden="true"></span></a>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

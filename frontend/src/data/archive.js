@@ -86,7 +86,7 @@ const poemDefinitions = [
 
 ©सुनील जोशी`,
 
-    excerpt: 'मै तेरे प्रेम में, गीत रच जाऊंगा, तुम वही गीत फिर गुनगुनाना प्रिये..',
+    //excerpt: 'मै तेरे प्रेम में, गीत रच जाऊंगा, तुम वही गीत फिर गुनगुनाना प्रिये..',
     language: 'Hindi',
     themes: ['Love', 'Beauty', 'Romance', 'श्रृंगार'],
     // year: 2026,
@@ -141,8 +141,7 @@ const poemDefinitions = [
 आवेदन किया जा रहा है।।
 
 ©सुनील जोशी`,
-
-    excerpt: 'फिर चुनावी माहौल है आया, फिर वही जोश लौट है आया।',
+    //: 'फिर चुनावी माहौल है आया, फिर वही जोश लौट है आया।',
     language: 'Hindi',
     themes: ['Humor', 'Wit', 'Peace', 'हास्य'],
     // year: 2025,
@@ -174,10 +173,10 @@ const poemDefinitions = [
 इंसान  हो, पत्थर  बन  कर क्या  करोगे ।
 
 ©सुनील जोशी`,
-    excerpt: 'जो घट रहा समाज में, तुम  साक्षी  हो न',
+    //: 'जो घट रहा समाज में, तुम  साक्षी  हो न',
     language: 'Hindi',
     themes: ['Sorrow', 'Grief', 'Memory', 'करुण'],
-    year: 2025,
+    //year: 2025,
     collectionIndex: 2
   },
   {
@@ -218,10 +217,10 @@ const poemDefinitions = [
 पहुंचाना होगा..
 
 ©सुनील जोशी`,
-    excerpt: 'अंतर्मन का शोर सुनाई दे रहा, चिर परिचित सा स्वर सुनाई दे रहा',
+    //excerpt: 'अंतर्मन का शोर सुनाई दे रहा, चिर परिचित सा स्वर सुनाई दे रहा',
     language: 'Hindi',
     themes: ['Anger', 'Fury', 'Time', 'रौद्र'],
-    year: 2024,
+    //year: 2024,
     collectionIndex: 3
   },
   {
@@ -287,10 +286,10 @@ const poemDefinitions = [
 महावीरों की कहानी।
 
 ©सुनील जोशी`,
-    excerpt: 'वीर धरा के वीरों सुन लो, कहता मैं जुबानी',
+    //excerpt: 'वीर धरा के वीरों सुन लो, कहता मैं जुबानी',
     language: 'Hindi',
     themes: ['Courage', 'Valor', 'Spirited Resolve', 'वीर'],
-    year: 2024,
+    //year: 2024,
     collectionIndex: 4
   },
   {
@@ -326,10 +325,10 @@ const poemDefinitions = [
 है जिसका जीवन में मान नहीं।
 
 ©सुनील जोशी`,
-    excerpt: 'At first light, the ferry gathers our unspoken goodbyes.',
+    //excerpt: 'At first light, the ferry gathers our unspoken goodbyes.',
     language: 'Hindi',
     themes: ['Fear', 'Dread', 'Mystery', 'भयानक'],
-    year: 2023,
+    //year: 2023,
     collectionIndex: 5
   },
   {
@@ -363,10 +362,10 @@ const poemDefinitions = [
 जब ऐसी दुखद खबर, फिर अखबार में पाएंगे।
     
 ©सुनील जोशी`,
-    excerpt: 'मैं  हैरान  हूं, हम  सब फिर आंसू बहाएंगे',
+    //excerpt: 'मैं  हैरान  हूं, हम  सब फिर आंसू बहाएंगे',
     language: 'Hindi',
     themes: ['Aversion', 'Disgust', 'Truth', 'बीभत्स'],
-    year: 2023,
+    //year: 2023,
     collectionIndex: 6
   },
   {
@@ -402,10 +401,10 @@ const poemDefinitions = [
 या फिर कोई ताना-बाना।
     
 ©सुनील जोशी`,
-    excerpt: 'तुम मात्र कल्पना हो, या मेरा विश्वास',
+    //excerpt: 'तुम मात्र कल्पना हो, या मेरा विश्वास',
     language: 'Hindi',
     themes: ['Astonishment', 'Wonder', 'Creation', 'अद्भुत'],
-    year: 2022,
+    //year: 2022,
     collectionIndex: 7
   },
   {
@@ -440,10 +439,10 @@ const poemDefinitions = [
 कठिन है.. संभव है!
     
 ©सुनील जोशी`,
-    excerpt: 'जीवन से जुड़ी है कुछ अपेक्षाएं',
+    //: 'जीवन से जुड़ी है कुछ अपेक्षाएं',
     language: 'Hindi',
     themes: ['Tranquility', 'Peace', 'Calm', 'शांत'],
-    year: 2022,
+    //year: 2022,
     collectionIndex: 8
   },
   {
@@ -479,10 +478,10 @@ const poemDefinitions = [
 स्पर्श को तेरे, मैं समझ पाया था।
     
 ©सुनील जोशी`,
-    excerpt: 'जब आंख खुली, तुझे पाया था',
+    //excerpt: 'जब आंख खुली, तुझे पाया था',
     language: 'Hindi',
     themes: ['Parental Love', 'Care', 'Tenderness', 'वात्सल्य'],
-    year: 2021,
+    //year: 2021,
     collectionIndex: 9
   },
   {
@@ -526,10 +525,10 @@ const poemDefinitions = [
 जमकर देखो, दुलार लुटाती कैकेयी माता।
 
 ©सुनील जोशी`,
-    excerpt: 'आज भवन को सजाती देखो, कैकेयी माता',
+    //excerpt: 'आज भवन को सजाती देखो, कैकेयी माता',
     language: 'Hindi',
     themes: ['Devotion', 'Spiritual', 'Surrender', 'भक्ति'],
-    year: 2021,
+    //year: 2021,
     collectionIndex: 10
   }
 ];
@@ -559,8 +558,8 @@ export const sampleBooks = [
     //description: 'Poems rooted in memory, landscape and the patient language of belonging.',
     coverImage: bookCover,
     author: 'Sunil Joshi',
-    year: 2021,
-    poemCount: 28
+    //year: 2021,
+    //poemCount: 28
   }
 ];
 

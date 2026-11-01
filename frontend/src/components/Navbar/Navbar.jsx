@@ -4,8 +4,8 @@ import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx';
 
 const navItems = [
   { to: '/', label: 'Home' },
-  { to: '/poems', label: 'Poems' },
   { to: '/collections', label: 'Collections' },
+  { to: '/poems', label: 'Poems' },
   { to: '/about', label: 'About' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/contact', label: 'Contact' }

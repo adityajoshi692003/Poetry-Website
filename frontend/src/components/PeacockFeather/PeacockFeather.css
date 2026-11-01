@@ -1,0 +1,50 @@
+.peacock-feather-guide {
+  position: fixed;
+  z-index: 2;
+  top: 31vh;
+  left: 78vw;
+  width: clamp(3.2rem, 6vw, 5.2rem);
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 8px 14px rgba(13, 49, 48, 0.2));
+  transform-origin: 50% 85%;
+}
+
+.peacock-feather-idle {
+  animation: feather-drift 8.4s ease-in-out infinite;
+  transform-origin: 50% 85%;
+  will-change: transform;
+}
+
+.peacock-feather-scroll {
+  transform-origin: 50% 85%;
+  will-change: transform;
+}
+
+.peacock-feather-art {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+@keyframes feather-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+  28% { transform: translate3d(-9px, -10px, 0) rotate(0.5deg); }
+  57% { transform: translate3d(5px, -19px, 0) rotate(2deg); }
+  79% { transform: translate3d(10px, -7px, 0) rotate(-0.5deg); }
+}
+
+@media (max-width: 720px) {
+  .peacock-feather-guide {
+    top: 24vh;
+    left: 82vw;
+    width: 2.55rem;
+    opacity: 0.84;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .peacock-feather-idle {
+    animation: none;
+  }
+}

@@ -18,10 +18,6 @@ export default function CollectionDetailsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [slug]);
-
-  useEffect(() => {
     let active = true;
 
     const fetchCollection = async () => {

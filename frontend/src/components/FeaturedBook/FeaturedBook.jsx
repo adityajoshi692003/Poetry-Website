@@ -13,20 +13,20 @@ export default function FeaturedBook({ book }) {
         <div className="book-details">
           <p className="eyebrow">Featured volume · {book.year}</p>
           <h2>{book.title}</h2>
-          <p>{book.description}</p>
+          {/* <p>{book.description}</p> */}
           <ul className="book-meta-list">
             <li>
               <span>Author</span>
               <strong>{book.author}</strong>
             </li>
-            <li>
+            {/* <li>
               <span>Publication Year</span>
               <strong>{book.year}</strong>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <span>Number of Poems</span>
               <strong>28</strong>
-            </li>
+            </li> */}
           </ul>
             <Link to="/poems" className="primary-button">
             Open this volume

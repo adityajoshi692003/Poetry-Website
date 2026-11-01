@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import api from '../../services/api.js';
 import { getVisitorId } from '../../utils/visitor.js';
@@ -14,6 +15,7 @@ const links = [
 
 export default function Footer() {
   const [uniqueVisits, setUniqueVisits] = useState(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     let active = true;
@@ -32,7 +34,13 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="site-footer">
+    <motion.footer
+      className="site-footer"
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ amount: 0.08 }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.45 }}
+    >
       <div className="container footer-grid">
         <div>
           <div className="footer-brand">Poetry Ink</div>
@@ -63,11 +71,12 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>Copyright © 2026 Poetry Ink Literary Archive</span>
+        <span>Copyright © 2026 Poetry Ink</span>
+        <span>Made with ❤️</span>
         <span className="footer-views" aria-live="polite">
-          Unique browser visits: {uniqueVisits === null ? '—' : uniqueVisits.toLocaleString()}
+          Visits: {uniqueVisits === null ? '—' : uniqueVisits.toLocaleString()}
         </span>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

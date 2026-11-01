@@ -57,7 +57,7 @@ export default function CollectionsPage() {
       <section className="page-hero section-block">
         <div className="container narrow">
           <p className="eyebrow">Collections</p>
-          <h1>Eleven collections, each with its own reading shelf.</h1>
+          <h1>Eleven shelves, a world of poetry.</h1>
           <p className="page-intro">Explore a volume, then follow its poems in order or open any title directly.</p>
         </div>
       </section>

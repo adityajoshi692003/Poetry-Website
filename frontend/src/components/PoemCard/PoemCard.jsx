@@ -1,11 +1,20 @@
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import PoemLikeButton from '../PoemLikeButton/PoemLikeButton.jsx';
 
-export default function PoemCard({ poem }) {
+export default function PoemCard({ poem, index = 0 }) {
   const collection = poem.collection?.title || 'Untitled Collection';
+  const prefersReducedMotion = useReducedMotion();
 
   return (
-    <article className="poem-card">
+    <motion.article
+      className="poem-card"
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={prefersReducedMotion ? undefined : { y: -3 }}
+      viewport={{ amount: 0.18 }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.45, delay: prefersReducedMotion ? 0 : (index % 4) * 0.06 }}
+    >
       <div className="poem-card-body">
         <h3>{poem.title}</h3>
         <p className="poem-collection">{collection}</p>
@@ -16,9 +25,9 @@ export default function PoemCard({ poem }) {
         </div>
         <div className="poem-card-actions">
           <Link to={`/poems/${poem.slug}`} className="text-link">Read Poem →</Link>
-          <PoemLikeButton slug={poem.slug} />
+          <PoemLikeButton slug={poem.slug} poemId={poem._id} />
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

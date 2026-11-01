@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import api from '../../services/api.js';
 import Loading from '../../components/Loading/Loading.jsx';
 import PoemLikeButton from '../../components/PoemLikeButton/PoemLikeButton.jsx';
 import { samplePoems } from '../../data/archive.js';
+import { ThemeContext } from '../../context/ThemeContext.jsx';
 
 const normalize = (str) => {
   try {
@@ -30,15 +31,16 @@ const findLocalPoem = (targetSlug) => {
 
 export default function PoemDetailsPage() {
   const { slug } = useParams();
+  const { theme } = useContext(ThemeContext);
   const [poem, setPoem] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // Kindle / Scribd Reader Preferences
   const [readerTheme, setReaderTheme] = useState(() => {
     try {
-      return localStorage.getItem('kindle-reader-theme') || 'sepia';
+      return theme === 'midnight' ? 'dark' : localStorage.getItem('kindle-reader-theme') || 'sepia';
     } catch {
-      return 'sepia';
+      return theme === 'midnight' ? 'dark' : 'sepia';
     }
   });
 
@@ -83,10 +85,6 @@ export default function PoemDetailsPage() {
       /* ignore */
     }
   }, [align]);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [slug]);
 
   useEffect(() => {
     let active = true;
@@ -364,7 +362,7 @@ export default function PoemDetailsPage() {
           <footer className="kindle-footer-actions">
             <div className="kindle-like-wrapper">
               <PoemLikeButton slug={poem.slug || slug} />
-              <span className="kindle-like-hint">Appreciate this piece</span>
+              <span className="kindle-like-hint"></span>
             </div>
 
             <div className="kindle-page-meta">

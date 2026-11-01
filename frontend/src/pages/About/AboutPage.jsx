@@ -8,7 +8,7 @@ export default function AboutPage() {
       <section className="page-hero section-block">
         <div className="container narrow">
           <p className="eyebrow">About the Poet</p>
-          <h1>In the quiet between language and memory, a life becomes a poem.</h1>
+          <h1>A life written in language and memory.</h1>
         </div>
       </section>
 

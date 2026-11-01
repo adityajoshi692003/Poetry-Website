@@ -16,7 +16,7 @@ const collections = [
     description: 'स्थायी भाव -  रति',
     theme: 'Monsoon',
     coverImage: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80',
-    year: 2026
+    //year: 2026
   },
   {
     title: 'हास्य रस',
@@ -24,7 +24,7 @@ const collections = [
     description: 'स्थायी भाव -  हास',
     theme: 'Silence',
     coverImage: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80',
-    year: 2025
+    //year: 2025
   },
   {
     title: 'करुण रस',
@@ -32,7 +32,7 @@ const collections = [
     description: 'स्थायी भाव -  शोक',
     theme: 'Heritage',
     coverImage: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80',
-    year: 2025
+    //year: 2025
   },
   {
     title: 'रौद्र रस',
@@ -40,7 +40,7 @@ const collections = [
     description: 'स्थायी भाव -  क्रोध',
     theme: 'Time',
     coverImage: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
-    year: 2024
+    //year: 2024
   },
   {
     title: 'वीर रस',
@@ -48,7 +48,7 @@ const collections = [
     description: 'स्थायी भाव -  उत्साह',
     theme: 'Time',
     coverImage: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
-    year: 2024
+    //year: 2024
   },
   {
     title: 'भयानक रस',
@@ -56,7 +56,7 @@ const collections = [
     description: 'स्थायी भाव -  भय',
     theme: 'Time',
     coverImage: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
-    year: 2024
+    //year: 2024
   },
   {
     title: 'बीभत्स रस',
@@ -64,7 +64,7 @@ const collections = [
     description: 'स्थायी भाव - घृणा',
     theme: 'Time',
     coverImage: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
-    year: 2024
+    //year: 2024
   },
   {
     title: 'अद्भुत रस',
@@ -72,7 +72,7 @@ const collections = [
     description: 'स्थायी भाव -  विस्मय',
     theme: 'Time',
     coverImage: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
-    year: 2024
+    //year: 2024
   },
   {
     title: 'शांत रस',
@@ -80,7 +80,7 @@ const collections = [
     description: 'स्थायी भाव -  वैराग्य',
     theme: 'Time',
     coverImage: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
-    year: 2024
+    //year: 2024
   },
   {
     title: 'वात्सल्य रस',
@@ -88,7 +88,7 @@ const collections = [
     description: 'स्थायी भाव - वात्सल्य',
     theme: 'Time',
     coverImage: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
-    year: 2024
+    //year: 2024
   },
   {
     title: 'भक्ति रस',
@@ -96,7 +96,7 @@ const collections = [
     description: 'स्थायी भाव - ईश्वर प्रेम',
     theme: 'Time',
     coverImage: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
-    year: 2024
+    //year: 2024
   }
 ];
 
@@ -109,7 +109,7 @@ const poems = [
     collection: null,
     language: 'Hindi',
     themes: ['Love', 'Beauty', 'Romance'],
-    year: 2026,
+    //year: 2026,
     featured: true,
     coverImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80'
   },
@@ -121,7 +121,7 @@ const poems = [
     collection: null,
     language: 'English',
     themes: ['Spirituality', 'Heritage', 'Silence'],
-    year: 2025,
+    //year: 2025,
     featured: true,
     coverImage: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80'
   },
@@ -133,7 +133,7 @@ const poems = [
     collection: null,
     language: 'Hindi',
     themes: ['Home', 'Heritage', 'Memory'],
-    year: 2025,
+    //year: 2025,
     featured: true,
     coverImage: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=900&q=80'
   },
@@ -145,7 +145,7 @@ const poems = [
     collection: null,
     language: 'English',
     themes: ['Love', 'Spirituality', 'Monsoon'],
-    year: 2024,
+    //year: 2024,
     coverImage: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80'
   },
   {
@@ -156,7 +156,7 @@ const poems = [
     collection: null,
     language: 'English',
     themes: ['Time', 'Memory', 'Love'],
-    year: 2024,
+    //year: 2024,
     coverImage: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80'
   }
 ];
