@@ -43,7 +43,7 @@ export default function Footer() {
     >
       <div className="container footer-grid">
         <div>
-          <div className="footer-brand">Poetry Ink</div>
+          <div className="footer-brand">Kavirasa</div>
           <p className="footer-tagline">A living library of poetry, art &amp; memory</p>
         </div>
 
@@ -71,10 +71,11 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>Copyright © 2026 Poetry Ink</span>
+        <span>Copyright © 2026 Kavirasa</span>
         <span>Made with ❤️</span>
         <span className="footer-views" aria-live="polite">
-          Visits: {uniqueVisits === null ? '—' : uniqueVisits.toLocaleString()}
+          <span>Visits:</span>
+          <strong>{uniqueVisits === null ? '—' : uniqueVisits.toLocaleString()}</strong>
         </span>
       </div>
     </motion.footer>

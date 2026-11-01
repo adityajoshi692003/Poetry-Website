@@ -54,9 +54,9 @@ export default function BookCarousel({ books = [] }) {
                 />
               </Link>
               <div className="book-carousel-copy">
-                {/* <p className="eyebrow">Poetry Ink Editions · {book.year}</p> */}
+                {/* <p className="eyebrow">Kavirasa Editions · {book.year}</p> */}
                 <h2 className="book-carousel-title">{book.title}</h2>
-                <p className="book-carousel-author">By {book.author || 'Poetry Ink'}</p>
+                <p className="book-carousel-author">By {book.author || 'Kavirasa'}</p>
                 {/* <p>{book.description}</p> */}
                 <div className="book-carousel-meta">
                   <a className="book-buy-button hero-action-button hero-action-primary" href={getAmazonUrl(book)} target="_blank" rel="noreferrer">Buy Now <span aria-hidden="true"></span></a>

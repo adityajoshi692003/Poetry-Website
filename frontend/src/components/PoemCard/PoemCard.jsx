@@ -25,7 +25,7 @@ export default function PoemCard({ poem, index = 0 }) {
         </div>
         <div className="poem-card-actions">
           <Link to={`/poems/${poem.slug}`} className="text-link">Read Poem →</Link>
-          <PoemLikeButton slug={poem.slug} poemId={poem._id} />
+          <PoemLikeButton slug={poem.slug} />
         </div>
       </div>
     </motion.article>

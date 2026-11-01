@@ -1286,7 +1286,7 @@ h3 { font-size: 2.25rem; }
 .book-carousel-cover:hover img { transform: scale(1.025); }
 .book-carousel-copy { display: flex; min-height: 235px; flex: 1; flex-direction: column; padding: 1.15rem; }
 .book-carousel-copy .eyebrow { margin-bottom: 0.45rem; font-size: 0.64rem; }
-.book-carousel-title { margin: 0 0 0.65rem; font-size: 1.8rem; line-height: 1.08; }
+.book-carousel-title { margin: 0 0 0.2rem; font-size: 1.8rem; line-height: 1.08; }
 .book-carousel-copy p:not(.eyebrow) { min-height: 4.8em; margin: 0 0 1rem; color: var(--muted); font-size: 0.86rem; line-height: 1.65; }
 .book-carousel-meta { display: flex; justify-content: space-between; padding-top: 0.15rem; border-top: 1px solid var(--border); font-size: 0.76rem; }
 .book-carousel-meta span { color: var(--muted); }
@@ -1341,8 +1341,10 @@ h3 { font-size: 2.25rem; }
 .contact-detail-card { min-height: 205px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.4rem; border: 1px solid var(--border); background: var(--card-bg); text-align: center; }
 .contact-detail-index { color: var(--gold); font-size: 0.72rem; letter-spacing: 0.14em; }
 .contact-detail-card h2 { margin: 0.65rem 0 1.3rem; font-size: 1.75rem; }
-.contact-social-links { display: grid; gap: 0.45rem; }
-.contact-social-links a { color: var(--primary); }
+.contact-social-links { display: grid; width: 100%; gap: 0.65rem; }
+.contact-social-links a { display: flex; width: fit-content; align-items: center; gap: 0.7rem; color: var(--primary); text-decoration: none; }
+.contact-social-links svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.contact-social-links svg .icon-fill { fill: currentColor; stroke: none; }
 .contact-social-links a:hover { color: var(--gold); }
 .contact-detail-blank { width: min(100%, 190px); height: 1px; background: var(--border); }
 
@@ -1638,6 +1640,7 @@ html.midnight .primary-button { color: #0d211c; }
 }
 .book-carousel-copy { min-height: 0; padding: 1.1rem; }
 .book-carousel-author { margin: 0 0 0.1rem; color: var(--primary); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; }
+.book-carousel-copy p.book-carousel-author { min-height: 0; margin: 0 0 0.35rem; }
 .book-carousel-copy p:not(.eyebrow):not(.book-carousel-author) { flex: 1; min-height: 0; }
 .book-carousel-meta { align-items: center; flex-wrap: wrap; padding-top: 0; border-top: 0; }
 .book-buy-button {
@@ -1746,8 +1749,9 @@ html.midnight .primary-button { color: #0d211c; }
 .collection-card:hover .collection-content h3 { color: var(--primary); }
 .poem-card:hover, .collection-card:hover { border-color: var(--gold); }
 
-.footer-bottom { justify-content: space-between; align-items: center; gap: 1rem; }
-.footer-views { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); }
+.footer-bottom { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); justify-content: space-between; align-items: center; gap: 1rem; }
+.footer-views { display: inline-flex; min-width: 0; align-items: center; gap: 0.4rem; color: var(--muted); }
+.footer-views strong { color: var(--ink); font-weight: 600; }
 
 @media (max-width: 850px) {
   .book-carousel-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 290px)); }
@@ -1755,7 +1759,7 @@ html.midnight .primary-button { color: #0d211c; }
 @media (max-width: 560px) {
   .book-carousel-grid { grid-template-columns: minmax(0, 360px); }
   .book-carousel-copy { min-height: 0; }
-  .footer-bottom { align-items: flex-start; flex-direction: column; }
+  .footer-bottom { grid-template-columns: 1fr; align-items: start; }
 }
 @media (prefers-reduced-motion: reduce) {
   .book-carousel-grid { animation: none; }

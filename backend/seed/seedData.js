@@ -169,7 +169,7 @@ const books = [
     author: 'Sunil Joshi',
     year: 2026,
     featured: true,
-    purchaseUrl: 'https://amzn.in/d/06jh56lg'
+    purchaseUrl: 'https://www.amazon.in/SANGINI-SUNIL-JOSHI/dp/B09SXCCHJT/ref=sr_1_4?dib=eyJ2IjoiMSJ9.UXF9gLiag19zQ3ubNLvlBaHBCKOzT4tviLBUWYfTNHhLPMRPsSmd2411yroKMSGc4Z9Gzf3rfI8dbjLSBbg0DE1FkuYtHeTWfxgvOv5diTjslrgAa1hB0V6ZUCzb1ng6v96AmaDVQhye8zXScMXD9x8jROfpwUH4AD9sHdtAzy9LaEyW-b5C4aJYL5lBjBXrQsyc91Pc438SrMsvTyJJb5QfR_hJn9-saUDNcFENEYc.3aA5rIxImbYpAZePAdBcQ4EuYW0gfI_GCLj-cPXZKcA&dib_tag=se&keywords=SANGINI&qid=1793527474&sr=8-4'
   }
 ];
 

@@ -58,9 +58,9 @@ export default function MainLayout() {
       <Footer />
       <PeacockFeather introActive={introVisible} />
       {introVisible && (
-        <div className="opening-sequence" role="status" aria-label="Welcome to Poetry Ink">
+        <div className="opening-sequence" role="status" aria-label="Welcome to Kavirasa">
           <div className="opening-sequence-copy">
-            <p className="opening-kicker">A literary world by Poetry Ink</p>
+            <p className="opening-kicker">A literary world by Kavirasa  </p>
             <h1>Welcome to My World</h1>
             <p>Where poetry becomes an experience.</p>
           </div>

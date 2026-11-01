@@ -24,7 +24,7 @@
 .peacock-feather-art {
   display: block;
   width: 100%;
-  overflow: visible;
+  height: auto;
 }
 
 @keyframes feather-drift {

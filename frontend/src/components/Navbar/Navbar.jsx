@@ -22,10 +22,10 @@ export default function Navbar() {
   return (
     <header className="topbar">
       <div className="container nav-wrap">
-        <NavLink className="brand" to="/" aria-label="Poetry Ink home">
-          <span className="brand-mark" aria-hidden="true">PI</span>
+        <NavLink className="brand" to="/" aria-label="Kavirasa home">
+          <span className="brand-mark" aria-hidden="true">KR</span>
           <span className="brand-copy">
-            <span className="brand-name">Poetry Ink</span>
+            <span className="brand-name">Kavirasa</span>
             <span className="brand-note">The literary archive</span>
           </span>
         </NavLink>

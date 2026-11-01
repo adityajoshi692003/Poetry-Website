@@ -1,8 +1,10 @@
+import { createHash } from 'node:crypto';
+import mongoose from 'mongoose';
 import Poem from '../models/Poem.js';
 import PoemLike from '../models/PoemLike.js';
 import validator from 'validator';
 
-const findPoemForLikes = async (slug, res) => {
+const findPoemLikeTarget = async (slug) => {
   let decodedSlug = slug;
   try {
     decodedSlug = decodeURIComponent(slug);
@@ -18,8 +20,16 @@ const findPoemForLikes = async (slug, res) => {
       { title: decodedSlug }
     ]
   }).select('_id');
-  if (!poem) res.status(404).json({ message: 'Poem not found.' });
-  return poem;
+
+  const slugPoemId = new mongoose.Types.ObjectId(
+    createHash('sha256').update(decodedSlug).digest('hex').slice(0, 24)
+  );
+  const poemId = poem?._id || slugPoemId;
+  const query = poem
+    ? { poem: { $in: [poemId, slugPoemId] } }
+    : { poem: poemId };
+
+  return { poemId, query };
 };
 
 export const getPoemLikeStatus = async (req, res, next) => {
@@ -29,15 +39,13 @@ export const getPoemLikeStatus = async (req, res, next) => {
       return res.status(400).json({ message: 'Invalid visitor ID.' });
     }
 
-    const poem = await findPoemForLikes(req.params.slug, res);
-    if (!poem) return;
-
-    const [count, visitorLike] = await Promise.all([
-      PoemLike.countDocuments({ poem: poem._id }),
-      visitorId ? PoemLike.exists({ poem: poem._id, visitorId }) : null
+    const { query } = await findPoemLikeTarget(req.params.slug);
+    const [visitors, visitorLike] = await Promise.all([
+      PoemLike.distinct('visitorId', query),
+      visitorId ? PoemLike.exists({ ...query, visitorId }) : null
     ]);
 
-    res.status(200).json({ count, liked: Boolean(visitorLike) });
+    res.status(200).json({ count: visitors.length, liked: Boolean(visitorLike) });
   } catch (error) {
     next(error);
   }
@@ -50,20 +58,19 @@ export const addPoemLike = async (req, res, next) => {
       return res.status(400).json({ message: 'A valid visitor ID is required.' });
     }
 
-    const poem = await findPoemForLikes(req.params.slug, res);
-    if (!poem) return;
+    const { poemId, query } = await findPoemLikeTarget(req.params.slug);
 
     try {
       await PoemLike.updateOne(
-        { poem: poem._id, visitorId },
-        { $setOnInsert: { poem: poem._id, visitorId } },
+        { ...query, visitorId },
+        { $setOnInsert: { poem: poemId, visitorId } },
         { upsert: true }
       );
     } catch (error) {
       if (error.code !== 11000) throw error;
     }
 
-    const count = await PoemLike.countDocuments({ poem: poem._id });
+    const count = (await PoemLike.distinct('visitorId', query)).length;
     res.status(200).json({ count, liked: true });
   } catch (error) {
     next(error);
@@ -77,11 +84,10 @@ export const removePoemLike = async (req, res, next) => {
       return res.status(400).json({ message: 'A valid visitor ID is required.' });
     }
 
-    const poem = await findPoemForLikes(req.params.slug, res);
-    if (!poem) return;
+    const { query } = await findPoemLikeTarget(req.params.slug);
 
-    await PoemLike.deleteOne({ poem: poem._id, visitorId });
-    const count = await PoemLike.countDocuments({ poem: poem._id });
+    await PoemLike.deleteMany({ ...query, visitorId });
+    const count = (await PoemLike.distinct('visitorId', query)).length;
     res.status(200).json({ count, liked: false });
   } catch (error) {
     next(error);
