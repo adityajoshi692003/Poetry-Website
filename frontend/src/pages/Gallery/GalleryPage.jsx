@@ -18,8 +18,7 @@ export default function GalleryPage() {
         const apiImages = galleryResponse.data.gallery || [];
         const videos = videoResponse.data.videos?.length ? videoResponse.data.videos : sampleVideos;
         setGalleryItems([
-          ...sampleGallery,
-          ...apiImages,
+          ...(apiImages.length ? apiImages : sampleGallery),
           ...videos.map((video) => ({
             ...video,
             image: video.thumbnail,
