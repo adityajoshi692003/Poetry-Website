@@ -47,7 +47,16 @@ export default function HomePage() {
       const availableBooks = booksResult.status === 'fulfilled' ? booksResult.value.data.books : [];
       const availablePoems = poemsResult.status === 'fulfilled' ? poemsResult.value.data.poems : [];
       const availableGallery = galleryResult.status === 'fulfilled' ? galleryResult.value.data.gallery : [];
-      setCollections(availableCollections?.length ? availableCollections : sampleCollections);
+      const apiCollections = availableCollections?.length ? availableCollections : [];
+      setCollections(apiCollections.length
+        ? apiCollections.map((collection) => {
+            const sampleCollection = sampleCollections.find((sample) => sample.slug === collection.slug);
+            return {
+              ...collection,
+              coverImage: sampleCollection?.coverImage || collection.coverImage
+            };
+          })
+        : sampleCollections);
       const booksWithSamples = [...(availableBooks || [])];
       sampleBooks.forEach((sampleBook) => {
         if (booksWithSamples.length < 3 && !booksWithSamples.some((book) => book.title === sampleBook.title)) {

@@ -3,7 +3,7 @@ import Visitor from '../models/Visitor.js';
 
 export const registerVisitor = async (req, res, next) => {
   try {
-    const { visitorId } = req.body;
+    const { visitorId } = req.body || {};
 
     if (typeof visitorId !== 'string' || !validator.isUUID(visitorId, 4)) {
       return res.status(400).json({ message: 'A valid visitor ID is required.' });

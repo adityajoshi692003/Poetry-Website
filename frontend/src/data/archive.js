@@ -1,51 +1,36 @@
-import galleryImage1 from '../assets/images/1.jpeg';
-import galleryImage2 from '../assets/images/2.jpeg';
-import galleryImage3 from '../assets/images/3.jpeg';
-import galleryImage4 from '../assets/images/4.jpeg';
-import galleryImage5 from '../assets/images/5.jpeg';
-import galleryImage6 from '../assets/images/6.jpeg';
-import galleryImage7 from '../assets/images/7.jpeg';
-import galleryImage8 from '../assets/images/8.jpeg';
-import galleryImage9 from '../assets/images/9.jpeg';
-import galleryImage10 from '../assets/images/10.jpeg';
-import galleryImage11 from '../assets/images/11.jpeg';
-import galleryImage12 from '../assets/images/12.jpeg';
-import galleryImage13 from '../assets/images/13.jpeg';
-
-import bookCover from '../assets/images/Book.jpeg';
-
+const collectionIconImages = Array.from({ length: 11 }, (_, index) => `/assets/collections/${index + 1}.jpeg`);
 
 const collectionDefinitions = [
-  ['श्रृंगार रस', 'shringara-rasa', 'स्थायी भाव - रति', 'Romance', 2026, 'photo-1500375592092-40eb2168fd21'],
-  ['हास्य रस', 'hasya-rasa', 'स्थायी भाव - हास', 'Laughter', 2025, 'photo-1470770841072-f978cf4d019e'],
-  ['करुण रस', 'karuna-rasa', 'स्थायी भाव - शोक', 'Sorrow', 2025, 'photo-1519681393784-d120267933ba'],
-  ['रौद्र रस', 'raudra-rasa', 'स्थायी भाव - क्रोध', 'Anger', 2024, 'photo-1493246507139-91e8fad9978e'],
-  ['वीर रस', 'veera-rasa', 'स्थायी भाव - उत्साह', 'Zeal', 2024, 'photo-1564507592333-c60657eea523'],
-  ['भयानक रस', 'bhayanaka-rasa', 'स्थायी भाव - भय', 'Fear', 2023, 'photo-1506744038136-46273834b3fb'],
-  ['बीभत्स रस', 'bibhatsa-rasa', 'स्थायी भाव - घृणा', 'Disgust', 2023, 'photo-1441974231531-c6227db76b6e'],
-  ['अद्भुत रस', 'adbhuta-rasa', 'स्थायी भाव - विस्मय', 'Wonder', 2022, 'photo-1500530855697-b586d89ba3ee'],
-  ['शांत रस', 'shanta-rasa', 'स्थायी भाव - वैराग्य', 'Detachment', 2022, 'photo-1519608487953-e999c86e7455'],
-  ['वात्सल्य रस', 'vatsalya-rasa', 'स्थायी भाव - वात्सल्य', 'Parental Love', 2021, 'photo-1470252649378-9c29740c9fa8'],
-  ['भक्ति रस', 'bhakti-rasa', 'स्थायी भाव - ईश्वर प्रेम', 'Devotion', 2021, 'photo-1518837695005-2083093ee35b']
+  ['श्रृंगार रस', 'shringara-rasa', 'स्थायी भाव - रति', 'Romance', 2026, 0],
+  ['हास्य रस', 'hasya-rasa', 'स्थायी भाव - हास', 'Laughter', 2025, 1],
+  ['करुण रस', 'karuna-rasa', 'स्थायी भाव - शोक', 'Sorrow', 2025, 2],
+  ['रौद्र रस', 'raudra-rasa', 'स्थायी भाव - क्रोध', 'Anger', 2024, 3],
+  ['वीर रस', 'veer-rasa', 'स्थायी भाव - उत्साह', 'Zeal', 2024, 4],
+  ['भयानक रस', 'bhayanak-rasa', 'स्थायी भाव - भय', 'Fear', 2023, 5],
+  ['वीभत्स रस', 'vibhatsa-rasa', 'स्थायी भाव - घृणा', 'Disgust', 2023, 6],
+  ['अद्भुत रस', 'adbhut-rasa', 'स्थायी भाव - विस्मय', 'Wonder', 2022, 7],
+  ['शांत रस', 'shant-rasa', 'स्थायी भाव - वैराग्य', 'Detachment', 2022, 8],
+  ['वात्सल्य रस', 'vatsalya-rasa', 'स्थायी भाव - वात्सल्य', 'Parental Love', 2021, 9],
+  ['भक्ति रस', 'bhakti-rasa', 'स्थायी भाव - ईश्वर प्रेम', 'Devotion', 2021, 10]
 ];
 
-export const sampleCollections = collectionDefinitions.map(([title, slug, description, theme, year, image]) => ({
+export const sampleCollections = collectionDefinitions.map(([title, slug, description, theme, year, iconIndex]) => ({
   title,
   slug,
   description,
   theme,
   year,
   poemCount: 1,
-  coverImage: `https://images.unsplash.com/${image}?auto=format&fit=crop&w=900&q=80`
+  coverImage: collectionIconImages[iconIndex]
 }));
 
 const poemDefinitions = [
   {
-    title: 'मै तेरे प्रेम में, गीत रच जाऊंगा',
-    slug: 'मै तेरे प्रेम में, गीत रच जाऊंगा',
+    title: 'मैं तेरे प्रेम में, गीत रच जाऊंगा',
+    slug: 'मैं तेरे प्रेम में, गीत रच जाऊंगा',
     altSlug: 'mai-tere-prem-mein-geet-rach-jaunga',
     content:
-      `मै तेरे प्रेम में, गीत रच जाऊंगा
+      `मैं तेरे प्रेम में, गीत रच जाऊंगा
 तुम वही गीत फिर गुनगुनाना प्रिये..
 
 कलम से कागज पे, उतारा करूं
@@ -76,7 +61,7 @@ const poemDefinitions = [
 हिरणी सी लगे, तेरी काया प्रिये।
 
 माथे पर सजी तेरी बिंदियाँ कहे,
-चांद माथे पे तूने, लगाया रिये।
+चांद माथे पे तूने, लगाया प्रिये।
 
 मैं तेरे प्रेम में, गीत रच जाऊंगा..
 तुम वही गीत फिर गुनगुनाना प्रिये ..
@@ -364,7 +349,7 @@ const poemDefinitions = [
 ©सुनील जोशी`,
     //excerpt: 'मैं  हैरान  हूं, हम  सब फिर आंसू बहाएंगे',
     language: 'Hindi',
-    themes: ['Aversion', 'Disgust', 'Truth', 'बीभत्स'],
+    themes: ['Aversion', 'Disgust', 'Truth', 'वीभत्स'],
     //year: 2023,
     collectionIndex: 6
   },
@@ -497,7 +482,7 @@ const poemDefinitions = [
 राम सिया से मिलन की मन में आस जगाए
 अपनी धुन में, सुध बुध खोती कैकेयी माता।
 कभी मुस्काती, कभी भरमाती, दीप जलाए 
-नैनो से नीर बहा, छुपकर रोती कैकेयी माता।
+नैनों से नीर बहा, छुपकर रोती कैकेयी माता।
 
 कैसी होगी अद्भुत छवि प्रभु, राम सिया की 
 सोच में डूब, अधीर हो जाए कैकेयी माता ।
@@ -556,7 +541,7 @@ export const sampleBooks = [
   {
     title: 'SANGINI',
     //description: 'Poems rooted in memory, landscape and the patient language of belonging.',
-    coverImage: bookCover,
+    coverImage: '/assets/book.jpeg',
     author: 'Sunil Joshi',
     //year: 2021,
     //poemCount: 28
@@ -564,19 +549,19 @@ export const sampleBooks = [
 ];
 
 export const sampleGallery = [
-  { title: 'सावित्रीबाई ज्योतिबा फुले साहित्य सेवा सम्मान', image: galleryImage1, description: 'सावित्रीबाई ज्योतिबा फुले साहित्य सेवा सम्मान 2026', location: 'Pune', year: 2026 },
-  { title: 'तितिक्षा इंटरनेशनल सम्मान', image: galleryImage2, description: 'भारतीय विचार साधना 2025', location: 'Pune', year: 2025 },
-  { title: 'तितिक्षा इंटरनेशनल सम्मान', image: galleryImage3, description: 'भारतीय विचार साधना 2025', location: 'Pune', year: 2025 },
-  { title: 'बाल भारती', image: galleryImage4, description: 'बाल भारती, पुणे', location: 'Pune', year: 2023 },
-  { title: 'अंजुमन, पुणे', image: galleryImage5, description: 'अंजुमन, पुणे', location: 'Pune', year: 2023 },
-  { title: 'Soo-be-it', image: galleryImage6, description: 'Soo-be-it, Pune', location: 'Pune', year: 2023 },
-  { title: 'LWG LIT FEST', image: galleryImage7, description: 'LWG LIT FEST, Lucknow 2026', location: 'Lucknow', year: 2026 },
-  { title: 'NCPA', image: galleryImage8, description: 'NCPA, Mumbai 2026', location: 'Mumbai', year: 2026 },
-  { title: 'LWG LIT FEST', image: galleryImage9, description: 'LWG LIT FEST, Lucknow 2026', location: 'Lucknow', year: 2026 },
-  { title: 'Pune Book Fair', image: galleryImage10, description: 'Pune Book Fair, Pune 2026', location: 'Pune', year: 2026 },
-  { title: 'हिंदी गौरव सम्मान', image: galleryImage11, description: 'हिंदी गौरव सम्मान, पुणे 2025', location: 'Pune', year: 2025 },
-  { title: 'पुणे पुस्तक जत्रा', image: galleryImage12, description: 'पुणे पुस्तक जत्रा, पुणे 2026', location: 'Pune', year: 2026 },
-  { title: 'सभागार', image: galleryImage13, description: 'मुंबई विश्वविद्यालय, मुंबई 2024', location: 'Mumbai', year: 2024 }
+  { title: 'सावित्रीबाई ज्योतिबा फुले साहित्य सेवा सम्मान', image: '/assets/gallery/1.jpeg', description: 'सावित्रीबाई ज्योतिबा फुले साहित्य सेवा सम्मान 2026', location: 'Pune', year: 2026 },
+  { title: 'तितिक्षा इंटरनेशनल सम्मान', image: '/assets/gallery/2.jpeg', description: 'भारतीय विचार साधना 2025', location: 'Pune', year: 2025 },
+  { title: 'कला साहित्य सम्मेलन', image: '/assets/gallery/3.jpeg', description: 'भारतीय विचार साधना 2025', location: 'Pune', year: 2025 },
+  { title: 'बाल भारती', image: '/assets/gallery/4.jpeg', description: 'बाल भारती, पुणे', location: 'Pune', year: 2023 },
+  { title: 'अंजुमन, पुणे', image: '/assets/gallery/5.jpeg', description: 'अंजुमन, पुणे', location: 'Pune', year: 2023 },
+  { title: 'Soo-be-it', image: '/assets/gallery/6.jpeg', description: 'Soo-be-it, Pune', location: 'Pune', year: 2023 },
+  { title: 'LWG LIT FEST', image: '/assets/gallery/7.jpeg', description: 'LWG LIT FEST, Lucknow 2026', location: 'Lucknow', year: 2026 },
+  { title: 'NCPA', image: '/assets/gallery/8.jpeg', description: 'NCPA, Mumbai 2026', location: 'Mumbai', year: 2026 },
+  { title: 'LWG LIT FEST', image: '/assets/gallery/9.jpeg', description: 'LWG LIT FEST, Lucknow 2026', location: 'Lucknow', year: 2026 },
+  { title: 'Pune Book Fair', image: '/assets/gallery/10.jpeg', description: 'Pune Book Fair, Pune 2026', location: 'Pune', year: 2026 },
+  { title: 'हिंदी गौरव सम्मान', image: '/assets/gallery/11.jpeg', description: 'हिंदी गौरव सम्मान, पुणे 2025', location: 'Pune', year: 2025 },
+  { title: 'पुणे पुस्तक जत्रा', image: '/assets/gallery/12.jpeg', description: 'पुणे पुस्तक जत्रा, पुणे 2026', location: 'Pune', year: 2026 },
+  { title: 'सभागार', image: '/assets/gallery/13.jpeg', description: 'मुंबई विश्वविद्यालय, मुंबई 2024', location: 'Mumbai', year: 2024 }
 ];
 
 export const sampleVideos = [

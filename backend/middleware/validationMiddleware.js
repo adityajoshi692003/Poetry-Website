@@ -6,7 +6,7 @@ export const sanitizeText = (value = '') => {
 };
 
 export const validateContact = (req, res, next) => {
-  const { name, email, message } = req.body;
+  const { name, email, message } = req.body || {};
 
   if (!name || !email || !message) {
     return res.status(400).json({ message: 'Name, email and message are required.' });
@@ -16,7 +16,7 @@ export const validateContact = (req, res, next) => {
     return res.status(400).json({ message: 'Please enter a valid name.' });
   }
 
-  if (!validator.isEmail(email)) {
+  if (typeof email !== 'string' || !validator.isEmail(email)) {
     return res.status(400).json({ message: 'Please enter a valid email address.' });
   }
 

@@ -5,7 +5,10 @@ export const notFound = (req, res, next) => {
 };
 
 export const errorHandler = (err, req, res, next) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  const requestedStatus = err.statusCode || err.status || res.statusCode;
+  const statusCode = Number.isInteger(requestedStatus) && requestedStatus >= 400 && requestedStatus < 600
+    ? requestedStatus
+    : 500;
 
   const payload = {
     message: process.env.NODE_ENV === 'production' ? 'Server error' : err.message

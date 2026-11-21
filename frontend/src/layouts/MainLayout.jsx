@@ -8,13 +8,21 @@ import '../styles/literary-world.css';
 import '../styles/typography.css';
 import { Outlet, useLocation } from 'react-router-dom';
 
+const hasSeenIntro = () => {
+  try {
+    return Boolean(localStorage.getItem('poetry-intro-seen'));
+  } catch {
+    return true;
+  }
+};
+
 export default function MainLayout() {
   const { pathname, search, key } = useLocation();
   const prefersReducedMotion = useReducedMotion();
   const [introVisible, setIntroVisible] = useState(() => (
     pathname === '/' &&
     !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
-    !localStorage.getItem('poetry-intro-seen')
+    !hasSeenIntro()
   ));
   const world = pathname.split('/')[1] || 'home';
 
@@ -24,7 +32,11 @@ export default function MainLayout() {
 
   useEffect(() => {
     if (!introVisible) return undefined;
-    localStorage.setItem('poetry-intro-seen', 'true');
+    try {
+      localStorage.setItem('poetry-intro-seen', 'true');
+    } catch {
+      // Intro persistence is optional when browser storage is unavailable.
+    }
     const timer = window.setTimeout(() => setIntroVisible(false), 2600);
     return () => window.clearTimeout(timer);
   }, [introVisible]);
@@ -34,7 +46,11 @@ export default function MainLayout() {
   }, [pathname]);
 
   const skipIntro = () => {
-    localStorage.setItem('poetry-intro-seen', 'true');
+    try {
+      localStorage.setItem('poetry-intro-seen', 'true');
+    } catch {
+      // Intro persistence is optional when browser storage is unavailable.
+    }
     setIntroVisible(false);
   };
 
@@ -58,9 +74,9 @@ export default function MainLayout() {
       <Footer />
       <PeacockFeather introActive={introVisible} />
       {introVisible && (
-        <div className="opening-sequence" role="status" aria-label="Welcome to Kavirasa">
+        <div className="opening-sequence" role="status" aria-label="Welcome to Kavyakala's literary world">
           <div className="opening-sequence-copy">
-            <p className="opening-kicker">A literary world by Kavirasa  </p>
+            <p className="opening-kicker">A literary world by Kavyakala  </p>
             <h1>Welcome to My World</h1>
             <p>Where poetry becomes an experience.</p>
           </div>

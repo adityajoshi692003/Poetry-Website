@@ -6,8 +6,12 @@ const THEME_KEY = 'poetry-theme';
 
 export function ThemeProvider({ children }) {
   const getPreferredTheme = () => {
-    const stored = localStorage.getItem(THEME_KEY);
-    if (stored) return stored;
+    try {
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored === 'midnight' || stored === 'manuscript') return stored;
+    } catch {
+      // Theme persistence is optional when browser storage is unavailable.
+    }
 
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'midnight' : 'manuscript';
   };
@@ -18,7 +22,11 @@ export function ThemeProvider({ children }) {
     document.documentElement.classList.remove('manuscript', 'midnight');
     document.documentElement.classList.add(theme);
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(THEME_KEY, theme);
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      // Theme persistence is optional when browser storage is unavailable.
+    }
   }, [theme]);
 
   const value = useMemo(() => ({ theme, setTheme }), [theme]);

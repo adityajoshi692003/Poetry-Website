@@ -73,10 +73,12 @@ npm run dev
 
 ```bash
 cd backend
+npm run validate-seed
 npm run seed
 ```
 
-This adds sample poems, collections, book, videos and gallery content for development.
+`validate-seed` checks model requirements, collection mappings, and public image paths without connecting to MongoDB.
+`seed` replaces the collections, poems, books, videos and gallery records in the configured database. It runs those changes in a transaction; MongoDB must support transactions (as Atlas does). Contact messages and visitor counts are preserved, while poem likes are cleared with the reseeded poems.
 
 ## MongoDB Atlas setup
 
@@ -111,6 +113,7 @@ This project is a personal literary portfolio and not a public CRUD platform.
 - Build the frontend with `npm --prefix frontend run build`.
 - Deploy backend and frontend separately or behind a reverse proxy.
 - Keep MongoDB Atlas credentials private.
+- `render.yaml` configures the backend as a Render web service and uses `/api/health` as its health check. Set `MONGO_URI` in the Render dashboard; the endpoint returns `503` if MongoDB is disconnected.
 
 ## Git / GitHub
 

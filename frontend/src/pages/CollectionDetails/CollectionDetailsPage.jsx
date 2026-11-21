@@ -26,6 +26,9 @@ export default function CollectionDetailsPage() {
         if (!active) return;
 
         const apiColl = data.collection;
+        const sampleCollection = sampleCollections.find(
+          (entry) => entry.slug === slug || normalize(entry.slug) === normalize(slug)
+        );
         const norm = normalize(slug);
         const localPoems = samplePoems.filter(
           (poem) =>
@@ -35,6 +38,7 @@ export default function CollectionDetailsPage() {
 
         setCollection({
           ...apiColl,
+          coverImage: sampleCollection?.coverImage || apiColl.coverImage,
           poems: apiColl.poems?.length ? apiColl.poems : localPoems
         });
       } catch (err) {

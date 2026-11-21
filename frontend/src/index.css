@@ -373,15 +373,17 @@ h3 { font-size: 2.25rem; }
 
 .collection-card {
   display: grid;
-  grid-template-rows: 260px auto;
+  grid-template-rows: auto auto;
 }
 .collection-card { transition: border-color 180ms ease, transform 180ms ease; }
 .collection-card:hover { border-color: var(--gold); transform: translateY(-2px); }
 .collection-card:hover h3 { color: var(--primary); }
 .collection-visual {
+  aspect-ratio: 4 / 5;
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
-  min-height: 220px;
+  min-height: 0;
 }
 .collection-content {
   padding: 1.2rem;
@@ -545,9 +547,10 @@ h3 { font-size: 2.25rem; }
   margin-bottom: 2.5rem;
 }
 .collection-detail-cover {
-  min-height: 460px;
+  aspect-ratio: 4 / 5;
   border-radius: 24px;
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   border: 1px solid var(--border);
 }
@@ -829,16 +832,10 @@ h3 { font-size: 2.25rem; }
   letter-spacing: 0;
 }
 .brand-mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--gold);
-  border-radius: 50% 50% 50% 8px;
-  color: var(--primary);
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.45rem;
-  transform: rotate(-8deg);
+  width: 96px;
+  height: 64px;
+  display: block;
+  object-fit: contain;
 }
 .brand-copy { display: grid; line-height: 1; }
 .brand-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; }
@@ -1051,7 +1048,7 @@ h3 { font-size: 2.25rem; }
   position: relative;
   isolation: isolate;
   display: flex;
-  min-height: 290px;
+  aspect-ratio: 4 / 5;
   flex-direction: column;
   justify-content: end;
   gap: 0.4rem;
@@ -1061,6 +1058,7 @@ h3 { font-size: 2.25rem; }
   background-color: var(--green);
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   border: 1px solid var(--border);
   box-shadow: 8px 9px 0 rgba(104,86,64,0.12);
   transition: transform 220ms ease, box-shadow 220ms ease;
@@ -1118,7 +1116,7 @@ h3 { font-size: 2.25rem; }
 
 @media (max-width: 720px) {
   .nav-wrap { min-height: 70px; }
-  .brand-mark { width: 38px; height: 38px; }
+  .brand-mark { width: 75px; height: 50px; }
   .brand-name { font-size: 1.8rem; }
   .brand-note { font-size: 0.55rem; }
   .menu-toggle { display: block; }
@@ -1164,7 +1162,7 @@ h3 { font-size: 2.25rem; }
   .quote-section { padding: 2.2rem 1rem; }
   .quote-section blockquote { font-size: 2rem; }
   .home-collection-shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 0.8rem; }
-  .collection-cover { min-height: 235px; padding: 0.9rem; }
+  .collection-cover { min-height: 0; padding: 0.9rem; }
   .collection-cover strong { font-size: 1.35rem; }
   .footer-grid { gap: 1.5rem; }
 }
@@ -1176,7 +1174,7 @@ h3 { font-size: 2.25rem; }
   .hero-actions { gap: 0.65rem; }
   .hero-actions a { width: 100%; }
   .home-collection-shelf { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
-  .collection-cover { min-height: 205px; }
+  .collection-cover { min-height: 0; }
   .collection-book-title { font-size: 1.05rem; }
   .brand-note { display: none; }
 }
@@ -1275,14 +1273,14 @@ h3 { font-size: 2.25rem; }
 .book-carousel-cover {
   position: relative;
   display: block;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 5 / 8;
   overflow: hidden;
   border: 0;
   border-bottom: 1px solid var(--border);
   border-radius: 0;
   background: var(--page-bg-alt);
 }
-.book-carousel-cover img { width: 100%; height: 100%; object-fit: contain; transition: transform 220ms ease; }
+.book-carousel-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 220ms ease; }
 .book-carousel-cover:hover img { transform: scale(1.025); }
 .book-carousel-copy { display: flex; min-height: 235px; flex: 1; flex-direction: column; padding: 1.15rem; }
 .book-carousel-copy .eyebrow { margin-bottom: 0.45rem; font-size: 0.64rem; }
@@ -1315,7 +1313,7 @@ h3 { font-size: 2.25rem; }
 
 .collection-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; padding-bottom: 4rem; }
 .collection-card { border-radius: 4px; box-shadow: 0 6px 20px var(--shadow); }
-.collection-card .collection-visual { min-height: 195px; }
+.collection-card .collection-visual { min-height: 0; }
 .collection-card .collection-content { padding: 1.1rem; }
 .collection-card .collection-content h3 { font-size: 1.9rem; line-height: 1.1; }
 .collection-poem-list { display: grid; gap: 0; margin: 0.85rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
@@ -1391,7 +1389,7 @@ html.midnight .primary-button { color: #0d211c; }
   .home-gallery-grid { grid-template-columns: 1fr; }
   .home-gallery-item:not(:first-child) { display: none; }
   .collection-card-grid, .gallery-grid { grid-template-columns: 1fr; }
-  .collection-card .collection-visual { min-height: 220px; }
+  .collection-card .collection-visual { min-height: 0; }
   .gallery-item { aspect-ratio: 4 / 3; }
   .footer-grid { align-items: start; gap: 1.25rem; }
   .footer-nav { flex: 1 1 100%; justify-content: start; }

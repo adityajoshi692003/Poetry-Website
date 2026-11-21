@@ -6,8 +6,8 @@ import { getVisitorId } from '../../utils/visitor.js';
 
 const links = [
   { to: '/', label: 'Home' },
-  { to: '/poems', label: 'Poems' },
   { to: '/collections', label: 'Collections' },
+  { to: '/poems', label: 'Poems' },
   { to: '/about', label: 'About' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/contact', label: 'Contact' }
@@ -43,8 +43,8 @@ export default function Footer() {
     >
       <div className="container footer-grid">
         <div>
-          <div className="footer-brand">Kavirasa</div>
-          <p className="footer-tagline">A living library of poetry &amp; emotions</p>
+          <div className="footer-brand">Kavyakala</div>
+          <p className="footer-tagline">The Divine Art of Poetry</p>
         </div>
 
         <nav className="footer-nav" aria-label="Footer navigation">
@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>Copyright © 2026 Kavirasa</span>
+        <span>Copyright © 2026 Kavyakala</span>
         <span>Made with ❤️</span>
         <span className="footer-views" aria-live="polite">
           <span>Visits:</span>

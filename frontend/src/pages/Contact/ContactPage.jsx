@@ -2,7 +2,7 @@ const contactDetails = {
   instagram: 'https://www.instagram.com/suniljoshi_poet/',
   facebook: 'https://www.facebook.com/share/1CybGZaUQA/',
   youtube: 'https://youtube.com/@hindipoetrybysunil?si=hAjxBRdSUWDGkkiU',
-  email: '',
+  email: 'kavyakalapoetry@gmail.com',
   phone: ''
 };
 
@@ -53,15 +53,7 @@ export default function ContactPage() {
             <div className="contact-detail-list">
               <p>
                 <span>Email</span>
-                {contactDetails.email
-                  ? <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
-                  : <span className="contact-detail-pending">sunil26joshi26@gmail.com</span>}
-              </p>
-              <p>
-                <span>Phone Number</span>
-                {contactDetails.phone
-                  ? <a href={`tel:${contactDetails.phone.replace(/[^\d+]/g, '')}`}>{contactDetails.phone}</a>
-                  : <span className="contact-detail-pending">+91 8390266851</span>}
+                <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
               </p>
             </div>
           </article>

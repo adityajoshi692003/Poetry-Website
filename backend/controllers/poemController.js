@@ -100,10 +100,15 @@ export const getPoems = async (req, res, next) => {
     const filter = {};
 
     if (q) {
+      if (typeof q !== 'string' || q.length > 100) {
+        return res.status(400).json({ message: 'Search query must be 100 characters or fewer.' });
+      }
+
+      const escapedQuery = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       filter.$or = [
-        { title: { $regex: q, $options: 'i' } },
-        { excerpt: { $regex: q, $options: 'i' } },
-        { themes: { $regex: q, $options: 'i' } }
+        { title: { $regex: escapedQuery, $options: 'i' } },
+        { excerpt: { $regex: escapedQuery, $options: 'i' } },
+        { themes: { $regex: escapedQuery, $options: 'i' } }
       ];
     }
 

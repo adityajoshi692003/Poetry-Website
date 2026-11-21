@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "seed": "node seed/seedData.js"
+    "seed": "node seed/seedData.js",
+    "validate-seed": "node seed/seedData.js --validate"
   },
   "dependencies": {
     "cors": "^2.8.5",

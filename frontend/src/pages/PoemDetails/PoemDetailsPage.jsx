@@ -366,7 +366,7 @@ export default function PoemDetailsPage() {
             </div>
 
             <div className="kindle-page-meta">
-              <small>Kavirasa Editions · Archive Volume {poem.year || '2026'}</small>
+              <small>Kavyakala Editions · Archive Volume {poem.year || '2026'}</small>
             </div>
           </footer>
         </div>

@@ -19,7 +19,16 @@ export default function CollectionsPage() {
         const apiPoems = poemResponse.data.poems || [];
         const mergedCollections = new Map(sampleCollections.map((collection) => [collection.slug, collection]));
 
-        apiCollections.forEach((collection) => mergedCollections.set(collection.slug, collection));
+        apiCollections.forEach((collection) => {
+          const sampleCollection = mergedCollections.get(collection.slug)
+            || sampleCollections.find((sample) => sample.title === collection.title);
+          const slug = sampleCollection?.slug || collection.slug;
+          mergedCollections.set(slug, {
+            ...collection,
+            slug,
+            coverImage: sampleCollection?.coverImage || collection.coverImage
+          });
+        });
 
         const populatedCollections = Array.from(mergedCollections.values()).map((collection) => {
           const matchingApiPoems = apiPoems.filter((poem) =>
