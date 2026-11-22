@@ -543,7 +543,47 @@ html.midnight .parallax-foreground {
     linear-gradient(180deg, rgba(16, 42, 39, 0.88), rgba(16, 42, 39, 0.92)),
     #102a27;
   color: #f0e2c8;
-  animation: opening-arrive 420ms ease-out both;
+  animation: opening-sequence-lifecycle 5200ms ease-in-out both;
+}
+
+.historical-doorway {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: min(100vw, 56.45vh);
+  aspect-ratio: 1016 / 1800;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.historical-door {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/Door.png');
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  box-shadow: inset 0 0 50px rgba(20, 10, 4, 0.42);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.historical-door-left {
+  background-position: left center;
+  transform-origin: left center;
+  animation: historical-door-open-left 2300ms 1050ms cubic-bezier(0.16, 0.82, 0.24, 1) forwards;
+}
+
+.historical-door-right {
+  background-position: right center;
+  transform-origin: right center;
+  animation: historical-door-open-right 2300ms 1050ms cubic-bezier(0.16, 0.82, 0.24, 1) forwards;
 }
 
 .opening-sequence::before,
@@ -576,7 +616,7 @@ html.midnight .parallax-foreground {
 
 .opening-sequence-copy {
   position: relative;
-  z-index: 1;
+  z-index: 5;
   max-width: 46rem;
   padding: 2rem;
   text-align: center;
@@ -589,6 +629,7 @@ html.midnight .parallax-foreground {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  animation: opening-copy-appear 900ms 900ms both;
 }
 
 .opening-sequence-copy h1 {
@@ -598,7 +639,7 @@ html.midnight .parallax-foreground {
   font-style: italic;
   font-weight: 500;
   line-height: 1;
-  animation: ink-unfurl 1.2s 180ms both;
+  animation: ink-unfurl 1400ms 900ms both;
 }
 
 .opening-sequence-copy > p:last-child {
@@ -606,7 +647,17 @@ html.midnight .parallax-foreground {
   color: #cfc5b2;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
   letter-spacing: 0.05em;
-  animation: opening-copy-appear 700ms 850ms both;
+  animation: opening-copy-appear 900ms 1300ms both;
+}
+
+.page-shell.is-opening-world .literary-route-content {
+  animation: cinematic-world-zoom 5200ms cubic-bezier(0.16, 0.82, 0.24, 1) both;
+  transform-origin: 50% 48%;
+}
+
+.page-shell.is-opening-world .topbar,
+.page-shell.is-opening-world .site-footer {
+  animation: cinematic-interface-reveal 5200ms ease-in-out both;
 }
 
 .opening-skip {
@@ -674,9 +725,41 @@ html.midnight .parallax-foreground {
   to { opacity: 1; }
 }
 
+@keyframes opening-sequence-lifecycle {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  82% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes historical-door-open-left {
+  0% { transform: rotateY(0deg) translateZ(0) scaleX(1); }
+  70% { transform: rotateY(78deg) translateZ(-90px) scaleX(0.98); }
+  100% { transform: rotateY(112deg) translateZ(-220px) scaleX(0.94); }
+}
+
+@keyframes historical-door-open-right {
+  0% { transform: rotateY(0deg) translateZ(0) scaleX(1); }
+  70% { transform: rotateY(-78deg) translateZ(-90px) scaleX(0.98); }
+  100% { transform: rotateY(-112deg) translateZ(-220px) scaleX(0.94); }
+}
+
+@keyframes cinematic-world-zoom {
+  0% { transform: scale(0.94); filter: brightness(0.72); }
+  22% { transform: scale(0.96); filter: brightness(0.78); }
+  58% { transform: scale(1.015); filter: brightness(0.92); }
+  78% { transform: scale(1.055); filter: brightness(1); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+@keyframes cinematic-interface-reveal {
+  0%, 58% { opacity: 0.15; }
+  78%, 100% { opacity: 1; }
+}
+
 @keyframes ink-unfurl {
-  from { clip-path: inset(0 100% 0 0); opacity: 0.35; }
-  to { clip-path: inset(0 0 0 0); opacity: 1; }
+  from { clip-path: inset(0 100% 0 0); opacity: 0.35; transform: translateY(12px); }
+  to { clip-path: inset(0 0 0 0); opacity: 1; transform: translateY(0); }
 }
 
 @keyframes opening-copy-appear {
@@ -788,6 +871,18 @@ html.midnight .parallax-foreground {
   .opening-sequence-copy h1,
   .opening-sequence-copy > p:last-child {
     animation: none;
+  }
+
+  .historical-door {
+    animation: none;
+  }
+
+  .historical-door-left {
+    transform: rotateY(112deg) translateZ(-220px);
+  }
+
+  .historical-door-right {
+    transform: rotateY(-112deg) translateZ(-220px);
   }
 
   .literary-world,

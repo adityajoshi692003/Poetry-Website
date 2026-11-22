@@ -8,21 +8,12 @@ import '../styles/literary-world.css';
 import '../styles/typography.css';
 import { Outlet, useLocation } from 'react-router-dom';
 
-const hasSeenIntro = () => {
-  try {
-    return Boolean(localStorage.getItem('poetry-intro-seen'));
-  } catch {
-    return true;
-  }
-};
-
 export default function MainLayout() {
   const { pathname, search, key } = useLocation();
   const prefersReducedMotion = useReducedMotion();
   const [introVisible, setIntroVisible] = useState(() => (
     pathname === '/' &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
-    !hasSeenIntro()
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ));
   const world = pathname.split('/')[1] || 'home';
 
@@ -32,12 +23,7 @@ export default function MainLayout() {
 
   useEffect(() => {
     if (!introVisible) return undefined;
-    try {
-      localStorage.setItem('poetry-intro-seen', 'true');
-    } catch {
-      // Intro persistence is optional when browser storage is unavailable.
-    }
-    const timer = window.setTimeout(() => setIntroVisible(false), 2600);
+    const timer = window.setTimeout(() => setIntroVisible(false), 5200);
     return () => window.clearTimeout(timer);
   }, [introVisible]);
 
@@ -46,16 +32,11 @@ export default function MainLayout() {
   }, [pathname]);
 
   const skipIntro = () => {
-    try {
-      localStorage.setItem('poetry-intro-seen', 'true');
-    } catch {
-      // Intro persistence is optional when browser storage is unavailable.
-    }
     setIntroVisible(false);
   };
 
   return (
-    <div className="page-shell" data-world={world}>
+    <div className={`page-shell${introVisible ? ' is-opening-world' : ''}`} data-world={world}>
       <Navbar />
       <main className={`literary-world world-${world}`}>
         <AnimatePresence mode="wait" initial={false}>
@@ -75,10 +56,14 @@ export default function MainLayout() {
       <PeacockFeather introActive={introVisible} />
       {introVisible && (
         <div className="opening-sequence" role="status" aria-label="Welcome to Kavyakala's literary world">
+          <div className="historical-doorway" aria-hidden="true">
+            <div className="historical-door historical-door-left" />
+            <div className="historical-door historical-door-right" />
+          </div>
           <div className="opening-sequence-copy">
-            <p className="opening-kicker">A literary world by Kavyakala  </p>
-            <h1>Welcome to My World</h1>
-            <p>Where poetry becomes an experience.</p>
+            <p className="opening-kicker">A literary world by Kavyakala !! </p>
+            <h1>Welcome To My World</h1>
+            <p>Where poetry becomes an experience..</p>
           </div>
           <button type="button" className="opening-skip" onClick={skipIntro}>
             Skip introduction <span aria-hidden="true">→</span>
