@@ -4,6 +4,7 @@ import PoemLikeButton from '../PoemLikeButton/PoemLikeButton.jsx';
 
 export default function PoemCard({ poem, index = 0, showMeta = true, showYear = true }) {
   const collection = poem.collection?.title || 'Untitled Collection';
+  const poemIdentifier = poem.slug || poem.title;
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -26,8 +27,8 @@ export default function PoemCard({ poem, index = 0, showMeta = true, showYear = 
           </div>
         )}
         <div className="poem-card-actions">
-          <Link to={`/poems/${poem.slug}`} className="text-link">Read Poem →</Link>
-          <PoemLikeButton slug={poem.slug} />
+          <Link to={`/poems/${encodeURIComponent(poemIdentifier)}`} className="text-link">Read Poem →</Link>
+          <PoemLikeButton slug={poemIdentifier} />
         </div>
       </div>
     </motion.article>

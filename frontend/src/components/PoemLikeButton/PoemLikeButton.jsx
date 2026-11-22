@@ -5,6 +5,7 @@ import { getVisitorId } from '../../utils/visitor.js';
 export default function PoemLikeButton({ slug }) {
   const [visitorId] = useState(getVisitorId);
   const [likeState, setLikeState] = useState({ count: 0, liked: false, loading: true, error: false });
+  const poemLabel = typeof slug === 'string' ? slug.replaceAll('-', ' ') : 'this poem';
 
   useEffect(() => {
     let active = true;
@@ -58,8 +59,8 @@ export default function PoemLikeButton({ slug }) {
       className={`poem-like-button${likeState.liked ? ' is-liked' : ''}`}
       onClick={toggleLike}
       aria-label={likeState.error
-        ? `Retry loading likes for ${slug.replaceAll('-', ' ')}`
-        : `${likeState.liked ? 'Unlike' : 'Like'} ${slug.replaceAll('-', ' ')}`}
+        ? `Retry loading likes for ${poemLabel}`
+        : `${likeState.liked ? 'Unlike' : 'Like'} ${poemLabel}`}
       aria-pressed={likeState.liked}
       disabled={likeState.loading}
       title={likeState.error ? 'Like count unavailable. Tap to retry.' : undefined}

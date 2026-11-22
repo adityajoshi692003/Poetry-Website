@@ -76,7 +76,7 @@ export default function PoemsPage() {
 
       <div className="container poem-grid archive-grid poem-card-grid">
         {filteredPoems.length ? (
-          filteredPoems.map((poem, index) => <PoemCard key={poem.slug} poem={poem} index={index} showMeta={false} />)
+          filteredPoems.map((poem, index) => <PoemCard key={poem.slug || poem._id || poem.title} poem={poem} index={index} showMeta={false} />)
         ) : (
           <div className="empty-panel">No poems match the current filters.</div>
         )}

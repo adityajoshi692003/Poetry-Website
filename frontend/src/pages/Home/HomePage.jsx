@@ -114,7 +114,7 @@ export default function HomePage() {
           </div>
           {visiblePoems.length ? (
             <div className="poem-grid home-poem-grid">
-              {visiblePoems.map((poem, index) => <PoemCard key={poem.slug} poem={poem} index={index} showYear={false} />)}
+              {visiblePoems.map((poem, index) => <PoemCard key={poem.slug || poem._id || poem.title} poem={poem} index={index} showYear={false} />)}
             </div>
           ) : (
             <p className="empty-panel">No poems found. Try another title, theme or phrase.</p>
