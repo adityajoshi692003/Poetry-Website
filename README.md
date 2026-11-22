@@ -109,11 +109,18 @@ This project is a personal literary portfolio and not a public CRUD platform.
 
 ## Production notes
 
-- Use environment variables for secrets and connection strings.
-- Build the frontend with `npm --prefix frontend run build`.
-- Deploy backend and frontend separately or behind a reverse proxy.
-- Keep MongoDB Atlas credentials private.
-- `render.yaml` configures the backend as a Render web service and uses `/api/health` as its health check. Set `MONGO_URI` in the Render dashboard; the endpoint returns `503` if MongoDB is disconnected.
+### Deploy both services to Render
+
+The root `render.yaml` defines the API web service and the frontend static site, including a rewrite for React Router URLs.
+
+1. Create a MongoDB Atlas database and a database user. Configure Atlas Network Access to allow connections from your hosting provider.
+2. In Render, create a Blueprint from this repository and deploy both services.
+3. Set `MONGO_URI` for `poetry-portfolio-api` in Render to the Atlas connection string. Keep this value private.
+4. Set `VITE_API_URL` for `poetry-portfolio-web` to the API's public URL followed by `/api`, for example `https://<your-api-host>/api`. This is a build-time setting; redeploy the frontend after changing it.
+5. Before loading production data, run `npm --prefix backend run validate-seed`. After it passes, run `npm --prefix backend run seed` with the production `MONGO_URI` configured. **Seeding replaces the poems, collections, books, videos and gallery records in that database.**
+6. Confirm `https://<your-api-host>/api/health` returns `{"status":"ok"}`, then open the frontend URL and test direct navigation to a poem or collection URL.
+
+Render serves the frontend over HTTPS and the API health check uses `/api/health`. Add a custom domain to the static site in Render when desired.
 
 ## Git / GitHub
 

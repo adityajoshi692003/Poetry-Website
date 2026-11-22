@@ -3,7 +3,7 @@ services:
     name: poetry-portfolio-api
     runtime: node
     rootDir: backend
-    buildCommand: npm install
+    buildCommand: npm ci
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
@@ -11,3 +11,16 @@ services:
         value: production
       - key: MONGO_URI
         sync: false
+  - type: web
+    name: poetry-portfolio-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
