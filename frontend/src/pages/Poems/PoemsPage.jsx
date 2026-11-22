@@ -16,7 +16,16 @@ export default function PoemsPage() {
     const fetchPoems = async () => {
       try {
         const { data } = await api.get('/poems');
-        setPoems(data.poems?.length ? data.poems : samplePoems);
+        const apiPoems = data.poems || [];
+        const hasUsablePoems = apiPoems.length > 0 && apiPoems.every((poem) => (
+          typeof poem.slug === 'string' &&
+          poem.slug.trim() &&
+          typeof poem.title === 'string' &&
+          poem.title.trim() &&
+          poem.collection?.slug &&
+          poem.collection?.title
+        ));
+        setPoems(hasUsablePoems ? apiPoems : samplePoems);
       } catch (err) {
         setPoems(samplePoems);
       } finally {
