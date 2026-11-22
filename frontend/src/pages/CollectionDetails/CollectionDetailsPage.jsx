@@ -125,14 +125,14 @@ export default function CollectionDetailsPage() {
         <div className="collection-contents-header">
           <h2>Reading Shelf in this Volume</h2>
           <p className="collection-contents-subtitle">
-            Open any composition below to read it in full Kindle/Scribd reader mode.
+            Open any composition below to read it in the reader mode.
           </p>
         </div>
 
         {poems.length > 0 ? (
           <div className="collection-poem-grid">
             {poems.map((poem, index) => (
-              <article className="collection-poem-card" key={poem.slug || index}>
+              <article className="collection-poem-card" key={poem.slug || poem.altSlug || poem.title || index}>
                 <div className="collection-poem-number">#{String(index + 1).padStart(2, '0')}</div>
                 <div className="collection-poem-info">
                   <div className="collection-poem-tags">
@@ -148,7 +148,7 @@ export default function CollectionDetailsPage() {
                 </div>
                 <div className="collection-poem-action">
                   <Link
-                    to={`/poems/${poem.slug}`}
+                    to={`/poems/${encodeURIComponent(poem.slug || poem.altSlug || poem.title)}`}
                     className="hero-action-button hero-action-primary"
                     aria-label={`Read ${poem.title}`}
                   >

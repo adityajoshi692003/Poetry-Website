@@ -27,7 +27,7 @@ export const sampleCollections = collectionDefinitions.map(([title, slug, descri
 const poemDefinitions = [
   {
     title: 'मैं तेरे प्रेम में, गीत रच जाऊंगा',
-    //slug: 'मैं तेरे प्रेम में, गीत रच जाऊंगा',
+    slug: 'mai-tere-prem-mein-geet-rach-jaunga',
     altSlug: 'mai-tere-prem-mein-geet-rach-jaunga',
     content:
       `मैं तेरे प्रेम में, गीत रच जाऊंगा
