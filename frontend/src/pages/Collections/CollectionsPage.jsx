@@ -15,8 +15,23 @@ export default function CollectionsPage() {
           api.get('/collections'),
           api.get('/poems')
         ]);
-        const apiCollections = collectionResponse.data.collections || [];
-        const apiPoems = poemResponse.data.poems || [];
+        const receivedCollections = collectionResponse.data.collections || [];
+        const receivedPoems = poemResponse.data.poems || [];
+        const hasUsableCollections = receivedCollections.length > 0 && receivedCollections.every((collection) => (
+          typeof collection.slug === 'string' &&
+          collection.slug.trim() &&
+          typeof collection.title === 'string' &&
+          collection.title.trim()
+        ));
+        const hasUsablePoems = receivedPoems.length > 0 && receivedPoems.every((poem) => (
+          typeof poem.slug === 'string' &&
+          poem.slug.trim() &&
+          typeof poem.title === 'string' &&
+          poem.title.trim() &&
+          poem.collection?.slug
+        ));
+        const apiCollections = hasUsableCollections ? receivedCollections : [];
+        const apiPoems = hasUsablePoems ? receivedPoems : [];
         const mergedCollections = new Map(sampleCollections.map((collection) => [collection.slug, collection]));
 
         apiCollections.forEach((collection) => {

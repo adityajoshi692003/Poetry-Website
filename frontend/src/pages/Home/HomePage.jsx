@@ -48,7 +48,21 @@ export default function HomePage() {
       const availablePoems = poemsResult.status === 'fulfilled' ? poemsResult.value.data.poems : [];
       const availableGallery = galleryResult.status === 'fulfilled' ? galleryResult.value.data.gallery : [];
       const apiCollections = availableCollections?.length ? availableCollections : [];
-      setCollections(apiCollections.length
+      const hasUsableCollections = apiCollections.length > 0 && apiCollections.every((collection) => (
+        typeof collection.slug === 'string' &&
+        collection.slug.trim() &&
+        typeof collection.title === 'string' &&
+        collection.title.trim()
+      ));
+      const hasUsablePoems = availablePoems?.length > 0 && availablePoems.every((poem) => (
+        typeof poem.slug === 'string' &&
+        poem.slug.trim() &&
+        typeof poem.title === 'string' &&
+        poem.title.trim() &&
+        poem.collection?.slug
+      ));
+
+      setCollections(hasUsableCollections
         ? apiCollections.map((collection) => {
             const sampleCollection = sampleCollections.find((sample) => sample.slug === collection.slug);
             return {
@@ -64,7 +78,7 @@ export default function HomePage() {
         }
       });
       setBooks(booksWithSamples.slice(0, 3));
-      setPoems(shufflePoems(availablePoems?.length ? availablePoems : samplePoems));
+      setPoems(shufflePoems(hasUsablePoems ? availablePoems : samplePoems));
       setGallery(availableGallery?.length ? availableGallery : sampleGallery);
       setVideos(videosResult.status === 'fulfilled' && videosResult.value.data.videos?.length
         ? videosResult.value.data.videos

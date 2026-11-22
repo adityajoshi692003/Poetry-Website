@@ -23,8 +23,8 @@ export default function CollectionCard({ collection }) {
         {collection.poems?.length > 0 && (
           <ul className="collection-poem-list" aria-label={`Poems in ${collection.title}`}>
             {collection.poems.map((poem) => (
-              <li key={poem.slug}>
-                <Link to={`/poems/${poem.slug}`}>{poem.title}<span aria-hidden="true">↗</span></Link>
+              <li key={poem.slug || poem.altSlug || poem.title}>
+                <Link to={`/poems/${encodeURIComponent(poem.slug || poem.altSlug || poem.title)}`}>{poem.title}<span aria-hidden="true">↗</span></Link>
               </li>
             ))}
           </ul>
