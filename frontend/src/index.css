@@ -2152,6 +2152,16 @@ html.midnight .primary-button { color: #0d211c; }
   margin-bottom: 0;
 }
 
+.kindle-stanza-label {
+  margin: 0 0 0.6rem;
+  color: var(--reader-ink);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  opacity: 0.72;
+  text-transform: uppercase;
+}
+
 /* Individual line */
 .kindle-line {
   font-family: 'Noto Serif Devanagari', 'Martel', 'Cormorant Garamond', Georgia, serif;

@@ -1,5 +1,4 @@
 import poetPortrait from '../../assets/images/18.jpeg';
-const themes = ['Love', 'Laughter', 'Sorrow', 'Anger', 'Zeal', 'Fear', 'Disgust', 'Wonder', 'Detachment', 'Parental Love', 'Devotion'];
 const influences = ['Indian classical literature', 'Bhakti poetry', 'Oral traditions'];
 
 export default function AboutPage() {
@@ -33,11 +32,6 @@ export default function AboutPage() {
             सुनील जोशी जी ने मुंबई विश्वविद्यालय, एन.सी.पी.ए. मुंबई सहित देश के अनेक प्रतिष्ठित साहित्यिक मंचों पर अपनी कविताओं का पाठ किया है। उनकी काव्य भाषा सरल, प्रवाहमयी और हृदय को छू लेने वाली है, जो उन्हें श्रोताओं और पाठकों दोनों का प्रिय बनाती है।
           </p>
 
-          <div className="tag-list">
-            {themes.map((theme) => (
-              <span key={theme}>{theme}</span>
-            ))}
-          </div>
         </div>
       </div>
 

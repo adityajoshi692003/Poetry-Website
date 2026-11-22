@@ -354,7 +354,7 @@ export default function PoemDetailsPage() {
               </span>
               <span className="kindle-meta-dot">·</span>
               <span className="kindle-meta-item">
-                <span className="kindle-meta-icon">❦</span> {stanzas.length} stanzas
+                <span className="kindle-meta-icon">❦</span> {Math.max(0, stanzas.length - 1)} stanzas
               </span>
             </div>
 
