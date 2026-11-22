@@ -42,10 +42,13 @@ export default function GalleryPage() {
   if (loading) return <Loading message="Preparing the gallery..." />;
   return (
     <>
-      <section className="page-hero section-block">
+      <section className="page-hero section-block gallery-page-hero">
         <div className="container narrow">
           <p className="eyebrow">Gallery</p>
-          <h1>Images and moving stories from the archive.</h1>
+          <h2>Moments Beyond the Words !!</h2>
+          {/* <p className="page-intro">Fragments of life, captured in time.</p> */}
+          <p className="page-intro">A glimpse into worlds beyond words.</p>
+          <p className="page-intro">A visual journey through the moments, places and experiences that shape the person behind the pen.</p>
         </div>
       </section>
 

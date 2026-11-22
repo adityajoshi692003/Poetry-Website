@@ -9,11 +9,14 @@ const contactDetails = {
 export default function ContactPage() {
   return (
     <div className="contact-world">
-      <section className="page-hero section-block">
+      <section className="page-hero section-block contact-page-hero">
         <div className="container narrow">
           <p className="eyebrow">The quiet courtyard</p>
-          <h1>Beyond the page...</h1>
-          <p className="page-intro">Follow along, or get in touch through the details below.</p>
+          <h2>Beyond The Page !!</h2>
+          {/* <p className="page-intro">Every connection begins with a conversation.</p> */}
+          <p className="page-intro">
+            Beyond the verses and stories lies a space for shared thoughts, meaningful conversations and new beginnings. Stay connected, share what resonates with you, or simply say hello.
+          </p>
         </div>
       </section>
 

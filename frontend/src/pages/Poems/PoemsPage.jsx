@@ -46,11 +46,15 @@ export default function PoemsPage() {
   if (loading) return <Loading message="Reading the poems archive..." />;
   return (
     <>
-      <section className="page-hero section-block">
+      <section className="page-hero section-block poems-page-hero">
         <div className="container narrow">
           <p className="eyebrow">My Poems</p>
-          <h1>Poems from the archive..</h1>
-          <p className="page-intro">Browse the complete reading shelf, or narrow it by title, collection or theme.</p>
+          <h2>Words That Find You..</h2>
+          <h3>Every verse holds a feeling. Every poem tells a story.</h3>
+          {/* <p className="page-intro">Explore a world of verses born from thoughts, emotions and moments.</p> */}
+          <p className="page-intro">
+            Discover poems that echo your feelings, awaken memories and give words to what the heart cannot express.
+          </p>
         </div>
       </section>
 

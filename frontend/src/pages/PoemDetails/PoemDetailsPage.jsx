@@ -150,11 +150,43 @@ export default function PoemDetailsPage() {
 
   const readingMinutes = Math.max(1, Math.ceil(wordCount / 110));
 
-  const handleShare = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href);
+  const handleShare = async () => {
+    const url = window.location.href;
+    const shareData = {
+      title: poem.title,
+      text: `Read "${poem.title}" by Sunil Joshi`,
+      url
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+        return;
+      } catch (error) {
+        if (error?.name === 'AbortError') return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        const copiedWithFallback = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (!copiedWithFallback) throw new Error('Copy failed');
+      }
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
+    } catch {
+      window.prompt('Copy this poem link:', url);
     }
   };
 
@@ -307,7 +339,7 @@ export default function PoemDetailsPage() {
                   {poem.collection.title}
                 </Link>
               )}
-              {poem.year && <span className="kindle-tag-pill year-pill">{poem.year}</span>}
+              {/* {poem.year && <span className="kindle-tag-pill year-pill">{poem.year}</span>} */}
             </div>
 
             <h1 className="kindle-poem-title">{poem.title}</h1>
@@ -325,12 +357,6 @@ export default function PoemDetailsPage() {
                 <span className="kindle-meta-icon">❦</span> {stanzas.length} stanzas
               </span>
             </div>
-
-            {poem.excerpt && poem.excerpt !== poem.content && (
-              <blockquote className="kindle-epigraph">
-                "{poem.excerpt.replace(/\n+/g, ' ')}"
-              </blockquote>
-            )}
 
             <div className="kindle-header-divider" aria-hidden="true" />
           </header>
@@ -366,7 +392,7 @@ export default function PoemDetailsPage() {
             </div>
 
             <div className="kindle-page-meta">
-              <small>Kavyakala Editions · Archive Volume {poem.year || '2026'}</small>
+              <small>Kavyakala Editions · Archive Volumes</small>
             </div>
           </footer>
         </div>

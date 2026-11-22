@@ -1534,6 +1534,32 @@ html.midnight .primary-button { color: #0d211c; }
   margin-inline: auto;
   text-align: left;
 }
+.page-hero.collections-page-hero .container.narrow {
+  text-align: center;
+}
+.collections-page-hero .page-intro {
+  margin-inline: auto;
+}
+.page-hero.gallery-page-hero .container.narrow {
+  text-align: center;
+}
+.gallery-page-hero .page-intro {
+  margin-inline: auto;
+}
+.page-hero.contact-page-hero .container.narrow {
+  text-align: center;
+}
+.contact-page-hero .page-intro {
+  margin-inline: auto;
+}
+.page-hero.poems-page-hero .container.narrow,
+.page-hero.about-page-hero .container.narrow {
+  text-align: center;
+}
+.poems-page-hero .page-intro,
+.about-page-hero .page-intro {
+  margin-inline: auto;
+}
 .archive-grid.poem-card-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;

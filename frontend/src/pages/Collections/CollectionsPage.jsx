@@ -63,11 +63,12 @@ export default function CollectionsPage() {
   if (loading) return <Loading message="Opening the collection archive..." />;
   return (
     <>
-      <section className="page-hero section-block">
+      <section className="page-hero section-block collections-page-hero">
         <div className="container narrow">
-          <p className="eyebrow">Collections</p>
-          <h1>Eleven shelves, a world of poetry.</h1>
-          <p className="page-intro">Explore a volume, then follow its poems in order or open any title directly.</p>
+          <p className="eyebrow">The Collections</p>
+          <h2>Worlds Within Words !!</h2>
+          <h3>Where every collection tells a story.</h3>
+          <p className="page-intro">Wander through a curated universe of poetry, where emotions find their voice, words become memories, and every collection opens a new chapter of expression.</p>
         </div>
       </section>
 

@@ -5,10 +5,13 @@ const influences = ['Indian classical literature', 'Bhakti poetry', 'Oral tradit
 export default function AboutPage() {
   return (
     <>
-      <section className="page-hero section-block">
+      <section className="page-hero section-block about-page-hero">
         <div className="container narrow">
           <p className="eyebrow">About the Poet</p>
-          <h1>A life written in language and memory.</h1>
+          <h2>Meet The Soul Behind The Verses !!</h2>
+          <p className="page-intro">Every poem begins somewhere — a thought, a feeling, a fleeting moment or a story waiting to be told. 
+            Discover the journey, inspirations and emotions that breathe life into these words.
+          </p>
         </div>
       </section>
 
